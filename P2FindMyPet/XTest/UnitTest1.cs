@@ -11,7 +11,8 @@ using Newtonsoft.Json;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Microsoft.Extensions.Configuration;
+using System.Reflection;
 
 namespace XTest
 {
@@ -19,6 +20,15 @@ namespace XTest
     {
         //create in-memory DB
         DbContextOptions<FindMyPetDBContext> options = new DbContextOptionsBuilder<FindMyPetDBContext>().UseInMemoryDatabase(databaseName: "TestingDb").Options;
+
+        private readonly IConfigurationRoot configuration;
+
+        public UnitTest1()
+        {
+            configuration = new ConfigurationBuilder()
+               .AddUserSecrets<UnitTest1>()
+               .Build();
+        }
 
         [Fact]
         public void AddCustomerSuccess()
@@ -99,6 +109,23 @@ namespace XTest
 
                 // assert
                 Assert.NotEqual("", test);
+            }
+        }
+
+        [Fact]
+        public void GetClientLocationCoordinates()
+        {
+            using (var context = new FindMyPetDBContext(options))
+            {
+                // arrange
+                CustomerHandler customerHandler = new CustomerHandler(context, configuration);
+                LocationCoords expectedLC = new LocationCoords() { latitude = -33.86714172363281f, longitude = 151.2071075439453f };
+
+                // act
+                LocationCoords lc = customerHandler.GetLocation("1.1.1.1");
+
+                // assert
+                Assert.Equal(expectedLC, lc);
             }
         }
 

@@ -32,7 +32,7 @@ namespace WebApplication1.Controllers
         {
 
             string result = _customerHandler.LoginCustomer(username, password);
-            return result; ;
+            return result;
         }
 
 
@@ -41,7 +41,7 @@ namespace WebApplication1.Controllers
 
         public string CreateCustomer(Customer customer)
         {
-
+            _customerHandler.GetLocation(HttpContext.Connection.RemoteIpAddress?.ToString());
             string result = _customerHandler.LoginCustomer(customer.Username, customer.Password);
             if (result == "There is no Customer with that username. Please try again or create a new account.")
             {

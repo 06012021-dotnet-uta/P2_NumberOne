@@ -1,17 +1,22 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
+using System.Text.Json;
 using RepostoryLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 using DataLayer;
+using Microsoft.Extensions.Configuration;
+using System.Net;
+
 namespace BusinessLayer
 {
     public class CustomerHandler : ICustomerHandler
     {
         private FindMyPetDBContext _context;
+        private readonly IConfiguration _configuration;
         private static Customer _currentCustomer;
 
         public static Customer currentCustomer
@@ -27,10 +32,16 @@ namespace BusinessLayer
             }
         }
 
+        
+        public CustomerHandler(FindMyPetDBContext context, IConfiguration configuration)
+        {
+            _context = context;
+            _configuration = configuration;
+        }
 
         public CustomerHandler(FindMyPetDBContext context)
         {
-            this._context = context;
+            _context = context;
         }
 
         /// <summary>
@@ -69,6 +80,51 @@ namespace BusinessLayer
                 return result;
             }
             return result;
+        }
+
+        /// <summary>
+        /// Obtains location of a customer through the use of ipstack.
+        /// </summary>
+        /// <param name="IpAddress">Ip address to obtain location</param>
+        /// <returns>LocationCoords object containing location coordinates. Returns null if unsuccessful</returns>
+        public LocationCoords GetLocation(string IpAddress)
+        {
+            //Grab the ip address of client connection
+            string clientIpAddress = IpAddress;
+            
+            //Throw exception if unable to get client connection ip
+            if(clientIpAddress.Length <= 0)
+            {
+                throw new Exception("Unable to obtain client ip address");
+            }
+
+            //Api key and url with parameters | Docs => https://ipstack.com/documentation
+            string apiKey = _configuration["ApiKey"];
+            string url = $"http://api.ipstack.com/{clientIpAddress}?access_key={apiKey}&fields=latitude,longitude";
+            
+            //For testing
+            //string testingurl = $"http://api.ipstack.com/1.1.1.1?access_key={apiKey}&fields=latitude,longitude";
+
+            using (WebClient client = new WebClient())
+            {
+                //Grab the json response from api
+                string json = client.DownloadString(url);
+
+                try
+                {
+                    //Deserialize json response to LocationCoords obj and return if successful
+                    LocationCoords location = JsonSerializer.Deserialize<LocationCoords>(json);
+                    return location;
+                }
+                catch(Exception e)
+                {
+                    //For uh-oh's in deserialization
+                    Console.WriteLine("Unable to deserialize ipstack response\n");
+                    Console.WriteLine(e.Message);
+
+                    return null;
+                }
+            }
         }
 
 
