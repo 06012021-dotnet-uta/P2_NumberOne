@@ -7810,11 +7810,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\WebApplication1\\LogInBusinessLayer\\LogInBusinessLayer.csproj",
+      "projectUniqueName": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\P2_NumberOne\\WebApplication1\\LogInBusinessLayer\\LogInBusinessLayer.csproj",
       "projectName": "LogInBusinessLayer",
-      "projectPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\WebApplication1\\LogInBusinessLayer\\LogInBusinessLayer.csproj",
+      "projectPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\P2_NumberOne\\WebApplication1\\LogInBusinessLayer\\LogInBusinessLayer.csproj",
       "packagesPath": "C:\\Users\\QQais\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\WebApplication1\\LogInBusinessLayer\\obj\\",
+      "outputPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\P2_NumberOne\\WebApplication1\\LogInBusinessLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\QQais\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7831,11 +7831,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\WebApplication1\\LogInDataLayer\\LogInDataLayer.csproj": {
-              "projectPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\WebApplication1\\LogInDataLayer\\LogInDataLayer.csproj"
+            "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\P2_NumberOne\\WebApplication1\\LogInDataLayer\\LogInDataLayer.csproj": {
+              "projectPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\P2_NumberOne\\WebApplication1\\LogInDataLayer\\LogInDataLayer.csproj"
             },
-            "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\WebApplication1\\LogInRepostoryLayer\\LogInRepostoryLayer.csproj": {
-              "projectPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\WebApplication1\\LogInRepostoryLayer\\LogInRepostoryLayer.csproj"
+            "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\P2_NumberOne\\WebApplication1\\LogInRepostoryLayer\\LogInRepostoryLayer.csproj": {
+              "projectPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\P2_NumberOne\\WebApplication1\\LogInRepostoryLayer\\LogInRepostoryLayer.csproj"
             }
           }
         }

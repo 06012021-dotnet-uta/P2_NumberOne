@@ -7581,11 +7581,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\WebApplication1\\LogInDataLayer\\LogInDataLayer.csproj",
+      "projectUniqueName": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\P2_NumberOne\\WebApplication1\\LogInDataLayer\\LogInDataLayer.csproj",
       "projectName": "LogInDataLayer",
-      "projectPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\WebApplication1\\LogInDataLayer\\LogInDataLayer.csproj",
+      "projectPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\P2_NumberOne\\WebApplication1\\LogInDataLayer\\LogInDataLayer.csproj",
       "packagesPath": "C:\\Users\\QQais\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\WebApplication1\\LogInDataLayer\\obj\\",
+      "outputPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\API\\P2_NumberOne\\WebApplication1\\LogInDataLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\QQais\\AppData\\Roaming\\NuGet\\NuGet.Config",
