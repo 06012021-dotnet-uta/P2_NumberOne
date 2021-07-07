@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "lgGU9P/2jedFDplbspHaFE5LYFSfY6l7ooZGq1yxNcdyp8yT3Lx+MGqeEsUbhzcC2D4ZGAQyjItXRk4oDAPzpA==",
+  "dgSpecHash": "QVro5t+rCn3QfMZqDEzVo+cLUAztlJwB98MzbPer45Cz10NgaGWLTrYcGDzQ0OlzIyo+C3lJbJanULpJWAU6FA==",
   "success": true,
   "projectFilePath": "C:\\Users\\QQais\\OneDrive\\Desktop\\P2FindMyPet\\P2FindMyPet\\DataLayer\\DataLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\QQais\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\QQais\\.nuget\\packages\\json.net\\1.0.33\\json.net.1.0.33.nupkg.sha512",
     "C:\\Users\\QQais\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\QQais\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\QQais\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",

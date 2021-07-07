@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using RepostoryLayer;
 using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -79,6 +80,7 @@ namespace BusinessLayer
 
             try
             {
+
                 _context.Add(customer);
                 _context.SaveChanges();
                 success = true;

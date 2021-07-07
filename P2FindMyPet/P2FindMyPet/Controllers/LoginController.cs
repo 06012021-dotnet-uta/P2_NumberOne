@@ -6,7 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataLayer;
+using System.Net;
 using RepostoryLayer;
+using javax.swing;
+using Newtonsoft.Json;
+using System.Globalization;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebApplication1.Controllers
@@ -36,12 +40,11 @@ namespace WebApplication1.Controllers
         }
 
 
-
+        
         [HttpPost("CreateCustomer")]
-
+        
         public string CreateCustomer(Customer customer)
         {
-
             string result = _customerHandler.LoginCustomer(customer.Username, customer.Password);
             if (result == "There is no Customer with that username. Please try again or create a new account.")
             {
@@ -71,7 +74,7 @@ namespace WebApplication1.Controllers
 
         // GET: a
         // pi/<LoginController>
-        [HttpGet]
+/*        [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
@@ -100,7 +103,8 @@ namespace WebApplication1.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-        }
+        } */
+
         [HttpGet("CutomerListController")]
         public List<Customer> CutomerListController()
         {
@@ -111,8 +115,35 @@ namespace WebApplication1.Controllers
         }
 
 
+        //=====================to get the cliet IP Address==================================
+        
+        [HttpGet("GetUserAddressByIp")]
+        public  IpInfo GetUserAddressByIp(string ip)
+            {
+                IpInfo ipInfo = new IpInfo();
+                try
+                {
+                    string info = new WebClient().DownloadString("http://ipinfo.io/" + ip);
+                    ipInfo = JsonConvert.DeserializeObject<IpInfo>(info);
+                    RegionInfo myRI1 = new RegionInfo(ipInfo.Country);
+                    RegionInfo myRI2 = new RegionInfo(ipInfo.City);
+                    RegionInfo myRI3 = new RegionInfo(ipInfo.Postal);
+                    RegionInfo myRI4 = new RegionInfo(ipInfo.Ip);
+                    RegionInfo myRI5 = new RegionInfo(ipInfo.Loc);
+                    RegionInfo myRI6 = new RegionInfo(ipInfo.Org);
+                    RegionInfo myRI7 = new RegionInfo(ipInfo.Region);
+                    RegionInfo myRI8 = new RegionInfo(ipInfo.Hostname);
+                }
+                catch (Exception)
+                {
 
+                }
 
+                return ipInfo;
+            }
+
+            //=====================End of  cliet IP Address==================================
+        
 
     }
 }
