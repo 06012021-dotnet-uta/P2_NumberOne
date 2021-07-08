@@ -12,6 +12,13 @@ pool:
 steps:
 - script: echo Hello, PipeLine!
   displayName: 'Run a one-line script'
+  
+- task: DotNetCoreCLI@2
+  inputs:
+    command: test
+    projects: '**/*XTest/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+    
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
