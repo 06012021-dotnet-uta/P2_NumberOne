@@ -16,13 +16,14 @@ steps:
 - task: UseDotNet@2
   displayName: 'Use .Net Core sdk'
   inputs:
-    packageType: sdk
+    packageType: runtime
     version: 5.0.x
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: test
-    projects: '**/*XTest/*.csproj'
+    command: 'test'
+    publishTestResults: true
+    projects: '**/XTest/XTest.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
 
