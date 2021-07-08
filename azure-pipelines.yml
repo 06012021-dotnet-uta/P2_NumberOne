@@ -13,11 +13,11 @@ steps:
 - script: echo Hello, PipeLine!
   displayName: 'Run a one-line script'
   
-- task: DotNetCoreCLI@2
-  inputs:
-    command: test
-    projects: '**/*XTest/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+#- task: DotNetCoreCLI@2
+#  inputs:
+#    command: test
+#    projects: '**/*XTest/*.csproj'
+#    arguments: '--configuration $(buildConfiguration)'
     
 
 - script: |
