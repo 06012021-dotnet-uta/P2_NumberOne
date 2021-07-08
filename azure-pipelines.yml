@@ -9,22 +9,37 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+#Added 
+variables:
+  solution: '**/*sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
 steps:
 - script: echo Hello, PipeLine!
   displayName: 'Run a one-line script'
 
+#Added
 - task: UseDotNet@2
   displayName: 'Use .Net Core sdk'
   inputs:
     packageType: runtime
     version: 5.0.x
 
-- task: DotNetCoreCLI@2
+#Added
+- task: VSTest@2
+  displayName: 'Server Unit Test'
   inputs:
-    command: 'test'
-    publishTestResults: true
-    projects: '**/XTest/XTest.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\XTest*test*.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    runTestsInIsolation: true
+    codeCoverageEnabled: true
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
 
  
