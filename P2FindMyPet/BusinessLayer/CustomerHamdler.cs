@@ -1,18 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using RepostoryLayer;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataLayer;
+using System.Data;
+
 namespace BusinessLayer
 {
     public class CustomerHandler : ICustomerHandler
     {
-        private FindMyPetDBContext _context;
+        private PetTrackerDBContext _context;
         private static Customer _currentCustomer;
+
 
         public static Customer currentCustomer
         {
@@ -28,10 +26,12 @@ namespace BusinessLayer
         }
 
 
-        public CustomerHandler(FindMyPetDBContext context)
+        public CustomerHandler(PetTrackerDBContext context)
         {
             this._context = context;
         }
+
+
 
         /// <summary>
         /// Returns string with result of checking customer credentials.
@@ -44,7 +44,7 @@ namespace BusinessLayer
             string result = "";
             try
             {
-                var temp = _context.Customers.Where(x => x.Username == username).FirstOrDefault();
+                var temp = _context.Customers.Where(x => x.UserName == username).FirstOrDefault();
                 if (temp != null)
                 {
                     if (temp.Password == password)
@@ -76,7 +76,6 @@ namespace BusinessLayer
         public bool Add(Customer customer)
         {
             bool success = false;
-
             try
             {
                 _context.Add(customer);
@@ -120,7 +119,7 @@ namespace BusinessLayer
             Customer customer = null;
             try
             {
-                customer = _context.Customers.Where(x => x.Id == id).FirstOrDefault();
+                customer = _context.Customers.Where(x => x.CustomerId == id).FirstOrDefault();
             }
             catch
             {
