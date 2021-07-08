@@ -12,13 +12,21 @@ pool:
 steps:
 - script: echo Hello, PipeLine!
   displayName: 'Run a one-line script'
-  
+
+- task: UseDotNet@2
+  displayName: 'Use .Net Core sdk'
+  inputs:
+    packageType: sdk
+    version: 5.0.x
+
 - task: DotNetCoreCLI@2
   inputs:
     command: test
     projects: '**/*XTest/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
-  
+
+
+ 
 - script: 
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
