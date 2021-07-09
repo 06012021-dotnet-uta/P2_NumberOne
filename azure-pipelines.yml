@@ -26,11 +26,7 @@ steps:
     packageType: runtime
     version: 5.0.x
 
-- task: VisualStudioTestPlatformInstaller@1
-  displayName: 'TestPlatform instatller'
-  inputs:
-    packageFeedSelector: 'nugetOrg'
-    versionSelector: 'latestStable'
+
 
 #Added
 - task: VSTest@2
