@@ -119,10 +119,6 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "Json.Net": {
-              "target": "Package",
-              "version": "[1.0.33, )"
-            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"
@@ -196,10 +192,6 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
-            "Json.Net": {
-              "target": "Package",
-              "version": "[1.0.33, )"
-            },
             "Microsoft.AspNetCore.Http": {
               "target": "Package",
               "version": "[2.2.2, )"

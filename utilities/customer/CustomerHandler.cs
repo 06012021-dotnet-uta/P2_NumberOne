@@ -23,8 +23,6 @@ namespace utilities
             _IGetMyLocation = getMyLocation;
         }
 
-
-
         /// <summary>
         /// Returns string with result of checking customer credentials.
         /// </summary>
@@ -83,7 +81,7 @@ namespace utilities
                 //If no customer found then add to db
                 if (result == null)
                 {
-                    //Map RegisterCustomerRequest to Customer
+                    //Map RegisterCustomerRequest info to Customer
                     var customer = new Customer
                     {
                         FirstName = regCustomer.FirstName,
@@ -120,27 +118,6 @@ namespace utilities
 
             return result;
         }
-        
-
-
-
-        public bool Add(RegisterCustomerRequest customer)
-        {
-            bool success = false;
-            try
-            {
-                _context.Add(customer);
-                _context.SaveChanges();
-                success = true;
-            }
-            catch (Exception)
-            {
-                //log stuff
-                return success;
-            }
-
-            return success;
-        }
 
         /// <summary>
         /// Accesses the database and returns Customer entries.
@@ -153,9 +130,9 @@ namespace utilities
             {
                 customers = _context.Customers.ToList();
             }
-            catch
+            catch(Exception e)
             {
-                Console.WriteLine("Exception.");
+                _logger.Log(LogLevel.Error, e.Message);
             }
             return customers;
         }
@@ -165,16 +142,16 @@ namespace utilities
         /// </summary>
         /// <param name="id">ID of customer to search for.</param>
         /// <returns>Customer object with matching ID.</returns>
-        public Customer SearchCustomer(int id)
+        public Customer CustomerDetails(int id)
         {
             Customer customer = null;
             try
             {
                 customer = _context.Customers.Where(x => x.CustomerId == id).FirstOrDefault();
             }
-            catch
+            catch(Exception e)
             {
-                Console.WriteLine("Exception.");
+                _logger.Log(LogLevel.Error, e.Message);
             }
             return customer;
         }

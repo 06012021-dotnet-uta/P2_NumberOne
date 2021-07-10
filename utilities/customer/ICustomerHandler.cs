@@ -11,7 +11,7 @@ namespace utilities
         Customer CreateCustomer(RegisterCustomerRequest customer, string ip, out string error);
         List<Customer> CustomerList();
         Customer LoginCustomer(LoginRequest loginRequest, out string error);
-        Customer SearchCustomer(int id);
+        Customer CustomerDetails(int id);
         
     }
 }

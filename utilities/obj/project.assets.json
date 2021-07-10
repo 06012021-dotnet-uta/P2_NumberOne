@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     "net5.0": {
-      "Json.Net/1.0.33": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Json.Net.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Json.Net.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Http/2.2.2": {
         "type": "package",
         "dependencies": {
@@ -1610,18 +1601,6 @@
     }
   },
   "libraries": {
-    "Json.Net/1.0.33": {
-      "sha512": "5tE+db6BqhRAvITIVBeRsQorLGshPExfm4FmMRvWWAfs4RxeTbFFj2PIEybwmMW0qR30HKkXDYhq0YkDK2Jtxw==",
-      "type": "package",
-      "path": "json.net/1.0.33",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "json.net.1.0.33.nupkg.sha512",
-        "json.net.nuspec",
-        "lib/netstandard2.0/Json.Net.dll"
-      ]
-    },
     "Microsoft.AspNetCore.Http/2.2.2": {
       "sha512": "BAibpoItxI5puk7YJbIGj95arZueM8B8M5xT1fXBn3hb3L2G3ucrZcYXv1gXdaroLbntUs8qeV8iuBrpjQsrKw==",
       "type": "package",
@@ -5954,7 +5933,6 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Json.Net >= 1.0.33",
       "Microsoft.AspNetCore.Http >= 2.2.2",
       "System.Json >= 4.7.1",
       "data_models >= 1.0.0"
@@ -6003,10 +5981,6 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
-          "Json.Net": {
-            "target": "Package",
-            "version": "[1.0.33, )"
-          },
           "Microsoft.AspNetCore.Http": {
             "target": "Package",
             "version": "[2.2.2, )"

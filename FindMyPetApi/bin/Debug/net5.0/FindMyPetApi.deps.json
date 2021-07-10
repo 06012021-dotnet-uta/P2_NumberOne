@@ -33,7 +33,6 @@
     ".NETCoreApp,Version=v5.0": {
       "FindMyPetApi/1.0.0": {
         "dependencies": {
-          "Json.Net": "1.0.33",
           "Swashbuckle.AspNetCore": "5.6.3",
           "coverlet.collector": "3.0.3",
           "data_models": "1.0.0",
@@ -328,17 +327,6 @@
         }
       },
       "coverlet.collector/3.0.3": {},
-      "Json.Net/1.0.33": {
-        "runtime": {
-          "lib/netstandard2.0/Json.Net.dll": {
-            "assemblyVersion": "1.0.33.1",
-            "fileVersion": "1.0.33.1"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Json.Net.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Http/2.2.2": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
@@ -1419,7 +1407,6 @@
       },
       "utilities/1.0.0": {
         "dependencies": {
-          "Json.Net": "1.0.33",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "System.Json": "4.7.1",
           "data_models": "1.0.0"
@@ -3131,13 +3118,6 @@
       "sha512": "sha512-PdyhdzG2LK7YUEtccObPql+3OuFODaFNeYayxdPoK1eHb2StZoeQf1WMb16QrKiIdi4fs5Kog8jxXtlZOgAEuA==",
       "path": "coverlet.collector/3.0.3",
       "hashPath": "coverlet.collector.3.0.3.nupkg.sha512"
-    },
-    "Json.Net/1.0.33": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-5tE+db6BqhRAvITIVBeRsQorLGshPExfm4FmMRvWWAfs4RxeTbFFj2PIEybwmMW0qR30HKkXDYhq0YkDK2Jtxw==",
-      "path": "json.net/1.0.33",
-      "hashPath": "json.net.1.0.33.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Http/2.2.2": {
       "type": "package",

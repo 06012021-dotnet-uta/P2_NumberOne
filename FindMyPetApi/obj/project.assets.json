@@ -8,15 +8,6 @@
           "build/netstandard1.0/coverlet.collector.targets": {}
         }
       },
-      "Json.Net/1.0.33": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/Json.Net.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Json.Net.dll": {}
-        }
-      },
       "Microsoft.AspNetCore.Http/2.2.2": {
         "type": "package",
         "dependencies": {
@@ -1691,7 +1682,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
-          "Json.Net": "1.0.33",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "System.Json": "4.7.1",
           "data_models": "1.0.0"
@@ -1755,18 +1745,6 @@
         "coverlet-icon.png",
         "coverlet.collector.3.0.3.nupkg.sha512",
         "coverlet.collector.nuspec"
-      ]
-    },
-    "Json.Net/1.0.33": {
-      "sha512": "5tE+db6BqhRAvITIVBeRsQorLGshPExfm4FmMRvWWAfs4RxeTbFFj2PIEybwmMW0qR30HKkXDYhq0YkDK2Jtxw==",
-      "type": "package",
-      "path": "json.net/1.0.33",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "json.net.1.0.33.nupkg.sha512",
-        "json.net.nuspec",
-        "lib/netstandard2.0/Json.Net.dll"
       ]
     },
     "Microsoft.AspNetCore.Http/2.2.2": {
@@ -6213,7 +6191,6 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
-      "Json.Net >= 1.0.33",
       "Swashbuckle.AspNetCore >= 5.6.3",
       "coverlet.collector >= 3.0.3",
       "data_models >= 1.0.0",
@@ -6266,10 +6243,6 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
-          "Json.Net": {
-            "target": "Package",
-            "version": "[1.0.33, )"
-          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[5.6.3, )"
