@@ -16,7 +16,7 @@ namespace utilities
     public class GetMyLocation :IGetMyLocation
     {
         //=====================to get the cliet IP Address==================================
-        public  string  GetMyCoordinate(string ip)
+        public string GetMyCoordinate(string ip)
         { 
         IpInfo ipInfo = new IpInfo();
         string info = new WebClient().DownloadString("http://ipinfo.io/" + ip);

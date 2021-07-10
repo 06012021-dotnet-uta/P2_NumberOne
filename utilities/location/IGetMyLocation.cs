@@ -10,6 +10,6 @@ namespace utilities
 {
     public interface IGetMyLocation
     {
-        string GetMyCoordinate(string ip);
+        string  GetMyCoordinate(string ip);
     }
 }
