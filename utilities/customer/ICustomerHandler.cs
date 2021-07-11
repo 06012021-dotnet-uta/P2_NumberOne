@@ -2,15 +2,16 @@
 using Microsoft.AspNetCore.Http;
 using System.Drawing;
 using data_models;
+using data_models.custom;
 
 namespace utilities
 {
     public interface ICustomerHandler
     {
-        bool Add(Customer customer);
+        Customer CreateCustomer(RegisterCustomerRequest customer, string ip, out string error);
         List<Customer> CustomerList();
-        string LoginCustomer(string username, string password);
-        Customer SearchCustomer(int id);
+        Customer LoginCustomer(LoginRequest loginRequest, out string error);
+        Customer CustomerDetails(int id);
         
     }
 }
