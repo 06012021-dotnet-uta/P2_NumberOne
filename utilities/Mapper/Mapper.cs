@@ -12,6 +12,14 @@ namespace utilities.Mapper
     public static class ObjectMapper
     {
         private static readonly MapperConfiguration _mapperConfig = new MapperConfiguration(cfg =>{
+            /*
+             * ...Add mapper configs here...
+             * 
+             * Example: cfg.CreateMap<CustomModel, DbModel>();
+             * 
+             * then call "var dbObj = ObjectMapper.Mapper.Map<<CustomModel, DbModel>(customObj);" to use
+             * 
+             * */
             cfg.CreateMap<RegisterCustomerRequest, Customer>();
         });
 
