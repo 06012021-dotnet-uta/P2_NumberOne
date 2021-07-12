@@ -158,3 +158,5 @@ C:\Users\Tyler\Documents\dev\Revature\P2_NumberOne\FindMyPetApi\obj\Debug\net5.0
 C:\Users\Tyler\Documents\dev\Revature\P2_NumberOne\FindMyPetApi\obj\Debug\net5.0\FindMyPetApi.pdb
 C:\Users\Tyler\Documents\dev\Revature\P2_NumberOne\FindMyPetApi\obj\Debug\net5.0\FindMyPetApi.genruntimeconfig.cache
 C:\Users\Tyler\Documents\dev\Revature\P2_NumberOne\FindMyPetApi\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\Tyler\Documents\dev\Revature\P2_NumberOne\FindMyPetApi\bin\Debug\net5.0\Humanizer.dll
+C:\Users\Tyler\Documents\dev\Revature\P2_NumberOne\FindMyPetApi\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll

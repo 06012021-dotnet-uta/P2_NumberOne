@@ -16,6 +16,8 @@ namespace data_models
         public int ForumId { get; set; }
         public bool IsClaimed { get; set; }
         public int PetId { get; set; }
+        public string ForumName { get; set; }
+        public string Descriptor { get; set; }
 
         public virtual Pet Pet { get; set; }
         public virtual ICollection<ForumImg> ForumImgs { get; set; }
