@@ -5,6 +5,7 @@ using System.Data;
 using data_models;
 using Microsoft.Extensions.Logging;
 using data_models.custom;
+using utilities.Mapper;
 
 namespace utilities
 {
@@ -81,6 +82,7 @@ namespace utilities
                 //If no customer found then add to db
                 if (result == null)
                 {
+                    /*
                     //Map RegisterCustomerRequest info to Customer
                     var customer = new Customer
                     {
@@ -96,6 +98,12 @@ namespace utilities
                         ZipCode = regCustomer.ZipCode,
                         AccountCreationDate = DateTime.Now
                     };
+                    */
+
+                    var customer = ObjectMapper.Mapper.Map<RegisterCustomerRequest, Customer>(regCustomer);
+                    customer.HomeLocationLatitude = latitude;
+                    customer.HomeLocationLongitude = longitude;
+
 
                     customer = _context.Add(customer).Entity;
                     _context.SaveChanges();
