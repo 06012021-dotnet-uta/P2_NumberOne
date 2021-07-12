@@ -64,6 +64,11 @@ namespace utilities
         }
 
         
+
+
+
+
+
         public Customer CreateCustomer(RegisterCustomerRequest regCustomer, string ip, out string error)
         {
             Customer result = null;
