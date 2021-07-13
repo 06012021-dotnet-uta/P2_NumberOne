@@ -26,6 +26,9 @@ namespace WebApplication1.Controllers
             _customerHandler = customerHandler;
         }
 
+
+
+
         [HttpPost("Login")]
         public IActionResult Login(LoginRequest loginRequest)
         {
@@ -38,6 +41,10 @@ namespace WebApplication1.Controllers
                 return StatusCode(200, result);
         }
         
+
+
+
+
         [HttpPost("Register")]
         public IActionResult Register(RegisterCustomerRequest customer, string ip)
         {
@@ -50,6 +57,11 @@ namespace WebApplication1.Controllers
                 return StatusCode(201, result);
         }
 
+
+
+
+
+
         [HttpGet("List")]
         public IActionResult CutomerListController()
         {
@@ -61,6 +73,11 @@ namespace WebApplication1.Controllers
                 return StatusCode(201, result);
         }
 
+
+
+
+
+
         [HttpGet("Details/{id}")]
         public IActionResult CustomerDetails(int id)
         {
@@ -71,6 +88,9 @@ namespace WebApplication1.Controllers
             else
                 return StatusCode(200, result);
         }
+
+
+
 
 
 
