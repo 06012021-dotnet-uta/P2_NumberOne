@@ -5981,19 +5981,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\QQais\\.nuget\\packages\\": {}
+    "C:\\Users\\Tyler\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\QQais\\OneDrive\\Desktop\\Qais Revature\\Qais Work\\P2\\P2_NumberOne\\utilities\\utilities.csproj",
+      "projectUniqueName": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\utilities\\utilities.csproj",
       "projectName": "utilities",
-      "projectPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\Qais Revature\\Qais Work\\P2\\P2_NumberOne\\utilities\\utilities.csproj",
-      "packagesPath": "C:\\Users\\QQais\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\Qais Revature\\Qais Work\\P2\\P2_NumberOne\\utilities\\obj\\",
+      "projectPath": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\utilities\\utilities.csproj",
+      "packagesPath": "C:\\Users\\Tyler\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\utilities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\QQais\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Tyler\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6007,8 +6007,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\QQais\\OneDrive\\Desktop\\Qais Revature\\Qais Work\\P2\\P2_NumberOne\\db_context\\data_models.csproj": {
-              "projectPath": "C:\\Users\\QQais\\OneDrive\\Desktop\\Qais Revature\\Qais Work\\P2\\P2_NumberOne\\db_context\\data_models.csproj"
+            "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\db_context\\data_models.csproj": {
+              "projectPath": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\db_context\\data_models.csproj"
             }
           }
         }
