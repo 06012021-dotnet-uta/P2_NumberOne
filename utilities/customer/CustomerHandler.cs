@@ -5,6 +5,7 @@ using System.Data;
 using data_models;
 using Microsoft.Extensions.Logging;
 using data_models.custom;
+using AutoMapper;
 using utilities.Mapper;
 
 namespace utilities
@@ -39,6 +40,9 @@ namespace utilities
                 {
                     if (temp.Password == loginRequest.Password)
                     {
+
+                         customer.LoggedinCustomer._LoggedInCustomerInfo = temp;
+                        
                         _currentCustomer = temp;
                         error = null;
                     }
@@ -64,11 +68,6 @@ namespace utilities
         }
 
         
-
-
-
-
-
         public Customer CreateCustomer(RegisterCustomerRequest regCustomer, string ip, out string error)
         {
             Customer result = null;
@@ -87,23 +86,24 @@ namespace utilities
                 //If no customer found then add to db
                 if (result == null)
                 {
-                    /*
                     //Map RegisterCustomerRequest info to Customer
-                    var customer = new Customer
-                    {
-                        FirstName = regCustomer.FirstName,
-                        LastName = regCustomer.LastName,
-                        UserName = regCustomer.UserName,
-                        Password = regCustomer.Password,
-                        Email = regCustomer.Email,
-                        HomeLocationLatitude = latitude,
-                        HomeLocationLongitude = longitude,
-                        WanderingRadius = regCustomer.WanderingRadius,
-                        Phone = regCustomer.Phone,
-                        ZipCode = regCustomer.ZipCode,
-                        AccountCreationDate = DateTime.Now
-                    };
-                    */
+                    /*
+                   //Map RegisterCustomerRequest info to Customer
+                   var customer = new Customer
+                   {
+                       FirstName = regCustomer.FirstName,
+                       LastName = regCustomer.LastName,
+                       UserName = regCustomer.UserName,
+                       Password = regCustomer.Password,
+                       Email = regCustomer.Email,
+                       HomeLocationLatitude = latitude,
+                       HomeLocationLongitude = longitude,
+                       WanderingRadius = regCustomer.WanderingRadius,
+                       Phone = regCustomer.Phone,
+                       ZipCode = regCustomer.ZipCode,
+                       AccountCreationDate = DateTime.Now
+                   };
+                   */
 
                     var customer = ObjectMapper.Mapper.Map<RegisterCustomerRequest, Customer>(regCustomer);
                     customer.HomeLocationLatitude = latitude;
@@ -166,6 +166,7 @@ namespace utilities
             {
                 _logger.Log(LogLevel.Error, e.Message);
             }
+            
             return customer;
         }
 
