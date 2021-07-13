@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\FindMyPetApi\\FindMyPetApi.csproj": {}
+    "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\FindMyPetApi\\FindMyPetApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\db_context\\data_models.csproj": {
+    "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\db_context\\data_models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\db_context\\data_models.csproj",
+        "projectUniqueName": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\db_context\\data_models.csproj",
         "projectName": "data_models",
-        "projectPath": "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\db_context\\data_models.csproj",
-        "packagesPath": "C:\\Users\\Guillermo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\db_context\\obj\\",
+        "projectPath": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\db_context\\data_models.csproj",
+        "packagesPath": "C:\\Users\\Tyler\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\db_context\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Guillermo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Tyler\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -80,21 +76,17 @@
         }
       }
     },
-    "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\FindMyPetApi\\FindMyPetApi.csproj": {
+    "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\FindMyPetApi\\FindMyPetApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\FindMyPetApi\\FindMyPetApi.csproj",
+        "projectUniqueName": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\FindMyPetApi\\FindMyPetApi.csproj",
         "projectName": "FindMyPetApi",
-        "projectPath": "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\FindMyPetApi\\FindMyPetApi.csproj",
-        "packagesPath": "C:\\Users\\Guillermo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\FindMyPetApi\\obj\\",
+        "projectPath": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\FindMyPetApi\\FindMyPetApi.csproj",
+        "packagesPath": "C:\\Users\\Tyler\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\FindMyPetApi\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Guillermo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Tyler\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -108,11 +100,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\db_context\\data_models.csproj": {
-                "projectPath": "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\db_context\\data_models.csproj"
+              "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\db_context\\data_models.csproj": {
+                "projectPath": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\db_context\\data_models.csproj"
               },
-              "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\utilities\\utilities.csproj": {
-                "projectPath": "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\utilities\\utilities.csproj"
+              "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\utilities\\utilities.csproj": {
+                "projectPath": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\utilities\\utilities.csproj"
               }
             }
           }
@@ -160,21 +152,17 @@
         }
       }
     },
-    "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\utilities\\utilities.csproj": {
+    "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\utilities\\utilities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\utilities\\utilities.csproj",
+        "projectUniqueName": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\utilities\\utilities.csproj",
         "projectName": "utilities",
-        "projectPath": "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\utilities\\utilities.csproj",
-        "packagesPath": "C:\\Users\\Guillermo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\utilities\\obj\\",
+        "projectPath": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\utilities\\utilities.csproj",
+        "packagesPath": "C:\\Users\\Tyler\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\utilities\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Guillermo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Tyler\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -188,8 +176,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\db_context\\data_models.csproj": {
-                "projectPath": "C:\\Users\\Guillermo\\Desktop\\P2\\P2_NumberOne\\db_context\\data_models.csproj"
+              "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\db_context\\data_models.csproj": {
+                "projectPath": "C:\\Users\\Tyler\\Documents\\dev\\Revature\\P2_NumberOne\\db_context\\data_models.csproj"
               }
             }
           }
