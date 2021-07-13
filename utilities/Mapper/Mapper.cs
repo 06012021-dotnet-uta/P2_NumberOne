@@ -21,6 +21,9 @@ namespace utilities.Mapper
              * 
              * */
             cfg.CreateMap<RegisterCustomerRequest, Customer>();
+            cfg.CreateMap<RegisterPetRequest, Pet>();
+            cfg.CreateMap<CurrentLoggedInCustomer, Customer>();
+            
         });
 
         public static IMapper Mapper = _mapperConfig.CreateMapper();

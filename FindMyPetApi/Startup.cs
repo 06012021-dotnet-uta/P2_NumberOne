@@ -14,7 +14,6 @@ using utilities;
 using data_models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using utilities.forum;
 
 namespace FindMyPetApi
 {
@@ -48,7 +47,11 @@ namespace FindMyPetApi
             services.AddSession();
             services.AddScoped<ICustomerHandler, CustomerHandler>();
             services.AddScoped<IGetMyLocation, GetMyLocation>();
-            services.AddScoped<IForumHandler, ForumHandler>();
+            services.AddScoped<ICategoryHandler, CategoryHandler>();
+            services.AddScoped<IBreedHandler, BreedHandler>();
+            services.AddScoped<IColorationHandler, ColorationHandler>();
+            services.AddScoped<IPetHandler, PetHandler>();
+
 
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
