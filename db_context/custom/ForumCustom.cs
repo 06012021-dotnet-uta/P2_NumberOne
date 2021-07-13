@@ -12,6 +12,6 @@ namespace data_models.custom
         public bool IsClaimed { get; set; }
         public int PetId { get; set; }
         public string ForumName { get; set; }
-        public string Description { get; set; }
+        public string Descriptor { get; set; }
     }
 }
