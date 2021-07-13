@@ -119,7 +119,7 @@ namespace utilities.forum
                         IsClaimed = x.IsClaimed,
                         PetId = x.PetId,
                         ForumName = x.ForumName,
-                        Description = x.Description
+                        Description = x.Descriptor
 
                     });
                 }
@@ -166,12 +166,11 @@ namespace utilities.forum
             }
             catch(ArgumentNullException e)
             {
-                error = "Something Wrong in SearchForum() method";
+                error = $"Something Wrong in SearchForum() method: {e.Message}";
             }
 
             return forum;
         }
-
 
 
         public Forum SearchForumPetID(int petID, out string error)
@@ -203,5 +202,51 @@ namespace utilities.forum
             return forum;
         }
 
+        public Forum SearchForum(int forumID, out string error)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CreatePost(int id, CreatePostRequest createPostRequest, out string error)
+        {
+            error = null;
+            try
+            {
+                var newPost = ObjectMapper.Mapper.Map<CreatePostRequest, Post>(createPostRequest);
+                newPost.ForumId = id;
+
+                _context.Posts.Add(newPost);
+                _context.SaveChanges();
+
+            }
+            catch(Exception e)
+            {
+                _logger.Log(LogLevel.Error, e.Message);
+                error = e.Message;
+            }
+
+            if (error == null)
+                return true;
+            else
+                return false;
+            
+        }
+
+        public List<Post> GetPosts(int id, out string error)
+        {
+            List<Post> posts;
+            error = null;
+
+            posts = _context.Posts.ToList();
+
+            if(posts.Count < 1)
+            {
+                error = "No posts found";
+
+                _logger.Log(LogLevel.Warning, error);
+            }
+
+            return posts;
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace utilities.Mapper
              * 
              * */
             cfg.CreateMap<RegisterCustomerRequest, Customer>();
+            cfg.CreateMap<CreatePostRequest, Post>();
         });
 
         public static IMapper Mapper = _mapperConfig.CreateMapper();

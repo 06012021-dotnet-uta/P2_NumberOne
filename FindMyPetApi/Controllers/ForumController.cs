@@ -34,7 +34,7 @@ namespace FindMyPetApi.Controllers
         /// </summary>
         /// <param name="newForum"></param>
         /// <returns></returns>
-        [HttpPost("NewForum")]
+        [HttpPost("Create")]
         public IActionResult NewForum(ForumCustom newForum) {
             string error;
             var forum = _forumHandler.CreateNewForum(newForum, out  error);
@@ -51,7 +51,7 @@ namespace FindMyPetApi.Controllers
         }
 
 
-        [HttpGet("DeleteForum")]
+        [HttpGet("Delete")]
         public IActionResult DeleteForum(int forumID)
         {
             string error;
@@ -68,7 +68,7 @@ namespace FindMyPetApi.Controllers
         }
 
 
-        [HttpGet("ForumList")]
+        [HttpGet("List")]
         public IActionResult ForumList()
         {
 
@@ -87,7 +87,7 @@ namespace FindMyPetApi.Controllers
         }
 
 
-        [HttpGet("ForumDetails/{id}")]
+        [HttpGet("{id}")]
         public IActionResult SearchByForumId(int forumID)
         {
             string error;
@@ -122,7 +122,29 @@ namespace FindMyPetApi.Controllers
             }
         }
 
+        [HttpPost("{id}/Posts/Create")]
+        public IActionResult CreatePost(int id, CreatePostRequest createPostRequest)
+        {
+            string error;
+            bool success = _forumHandler.CreatePost(id, createPostRequest, out error);
 
+            if (success)
+                return StatusCode(200);
+            else
+                return StatusCode(400, error);
+        }
+
+        [HttpGet("{id}/Posts/List")]
+        public IActionResult ListPosts(int id)
+        {
+            string error;
+            var posts = _forumHandler.GetPosts(id, out error);
+
+            if (posts.Count > 0)
+                return StatusCode(200, posts);
+            else
+                return StatusCode(400, error);
+        }
 
 
 
