@@ -27,7 +27,12 @@ namespace utilities.forum
         }
 
 
-
+        /// <summary>
+        /// Create a New Forum
+        /// </summary>
+        /// <param name="newForum"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
         public Forum CreateNewForum(ForumCustom newForum, out string error)
         {
             Forum result = null;
@@ -62,6 +67,13 @@ namespace utilities.forum
         }
 
 
+
+        /// <summary>
+        /// Delete A particular Forum
+        /// </summary>
+        /// <param name="forumID"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
         public bool DeletedForum(int forumID, out string error)
         {
             Forum forum = null;
@@ -82,8 +94,113 @@ namespace utilities.forum
                 error = null;
                 return succes;
             }
+        }
 
 
+
+        /// <summary>
+        /// Display Forum list
+        /// </summary>
+        /// <param name="error"></param>
+        /// <returns></returns>
+        public List<ForumCustom> ShowForumList(out string error)
+        {
+            List<ForumCustom> forumList = null;
+
+            try
+            {
+                var forumDB = _context.Forums.ToList();
+
+                foreach(var x in forumDB)
+                {
+                    forumList.Add(new ForumCustom
+                    {
+                        ForumId = x.ForumId,
+                        IsClaimed = x.IsClaimed,
+                        PetId = x.PetId,
+                        ForumName = x.ForumName,
+                        Description = x.Description
+
+                    });
+                }
+            }
+            catch (ArgumentNullException ex)
+            {
+                error = "ShowForumList problem";
+                Console.WriteLine($"The was a problem on forumList display {ex.InnerException}");
+              
+            }
+
+            error = null;
+            return forumList;
+        }
+
+
+
+        /// <summary>
+        /// Search forum by Name
+        /// </summary>
+        /// <param name="forumName"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
+        public Forum SearchForumID(int forumID, out string error)
+        {
+            Forum forum = null;
+
+            try
+            {
+
+                forum = _context.Forums.Where(x => x.ForumId == forumID).FirstOrDefault();
+
+                if (forum == null)
+                {
+                    error = "ForumID not found in the DB";
+                    
+                }
+                else
+                {
+                    error = null;
+                    
+                }
+
+            }
+            catch(ArgumentNullException e)
+            {
+                error = "Something Wrong in SearchForum() method";
+            }
+
+            return forum;
+        }
+
+
+
+        public Forum SearchForumPetID(int petID, out string error)
+        {
+            Forum forum = null;
+
+            try
+            {
+
+                forum = _context.Forums.Where(x => x.PetId == petID).FirstOrDefault();
+
+                if (forum == null)
+                {
+                    error = "PetID not found in the DB";
+
+                }
+                else
+                {
+                    error = null;
+
+                }
+
+            }
+            catch (ArgumentNullException e)
+            {
+                error = "Something Wrong in SearchForumPetID() method";
+            }
+
+            return forum;
         }
 
     }

@@ -65,9 +65,62 @@ namespace FindMyPetApi.Controllers
             {
                 return StatusCode(400, error);
             }
+        }
+
+
+        [HttpGet("ForumList")]
+        public IActionResult ForumList()
+        {
+
+            string error;
+            List<ForumCustom> forumList = _forumHandler.ShowForumList(out error);
+
+            if(forumList == null)
+            {
+                return StatusCode(400, error);
+            }
+            else
+            {
+                return StatusCode(200);
+            }
 
         }
 
+
+        [HttpGet("ForumDetails/{id}")]
+        public IActionResult SearchByForumId(int forumID)
+        {
+            string error;
+
+            var forum = _forumHandler.SearchForum(forumID, out error);
+
+            if (forum == null)
+            {
+                return StatusCode(400, error);
+            }
+            else
+            {
+                return StatusCode(200);
+            }
+        }
+
+
+        [HttpGet("ForumDetailsByPet/{id}")]
+        public IActionResult SearchForumByPetId(int petID)
+        {
+            string error;
+
+            var forum = _forumHandler.SearchForum(petID, out error);
+
+            if (forum == null)
+            {
+                return StatusCode(400, error);
+            }
+            else
+            {
+                return StatusCode(200);
+            }
+        }
 
 
 

@@ -12,5 +12,8 @@ namespace utilities.forum
     {
         Forum CreateNewForum(ForumCustom newForum, out string error);
         bool DeletedForum(int forumID, out string error);
+        List<ForumCustom> ShowForumList(out string error);
+        Forum SearchForum(int forumID, out string error);
+        Forum SearchForumPetID(int petID, out string error);
     }
 }
