@@ -16,7 +16,10 @@ namespace utilities
         private readonly ILogger<CustomerHandler> _logger;
         private readonly IGetMyLocation _IGetMyLocation;
         private Customer _currentCustomer;
-
+        public  CustomerHandler(PetTrackerDBContext context)
+        {
+            _context = context;
+        }
 
         public CustomerHandler(PetTrackerDBContext context, ILogger<CustomerHandler> logger, IGetMyLocation getMyLocation)
         {
@@ -68,16 +71,25 @@ namespace utilities
         }
 
         
-        public Customer CreateCustomer(RegisterCustomerRequest regCustomer, string ip, out string error)
+            public Customer CreateCustomer(RegisterCustomerRequest regCustomer, string ip, out string error)
         {
+            double latitude = 0;
+            double longitude = 0;
+
             Customer result = null;
-
-            //Grab ip location info
-            string myaddress = _IGetMyLocation.GetMyCoordinate(ip);
-            string[] address = myaddress.Split(",");
-            double latitude = Convert.ToDouble(address[0]);
-            double longitude = Convert.ToDouble(address[1]);
-
+            if (ip != "127.0.0.1")
+            {
+                //Grab ip location info
+                string myaddress = _IGetMyLocation.GetMyCoordinate(ip);
+                string[] address = myaddress.Split(",");
+                latitude = Convert.ToDouble(address[0]);
+                longitude = Convert.ToDouble(address[1]);
+            }
+            else 
+            {
+                latitude = 0;
+                longitude = 0;
+            }
             try
             {
                 //Check to see if customer with username is already registered

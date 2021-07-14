@@ -30,12 +30,12 @@ namespace data_models
         public virtual DbSet<Post> Posts { get; set; }
         public virtual DbSet<PostImage> PostImages { get; set; }
 
- /*      protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+       /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=FindMyPetDB;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=tcp:pettrackerapp.database.windows.net,1433;Initial Catalog=PetTrackerDB;Persist Security Info=False;User ID=group1;Password=admin123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }*/
 
@@ -105,7 +105,7 @@ namespace data_models
             {
                 entity.ToTable("Customer");
 
-                entity.HasIndex(e => e.UserName, "UQ__Customer__C9F2845670DF1DB8")
+                entity.HasIndex(e => e.UserName, "UQ__Customer__C9F284562E869C99")
                     .IsUnique();
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
@@ -140,6 +140,12 @@ namespace data_models
                 entity.ToTable("Forum");
 
                 entity.Property(e => e.ForumId).HasColumnName("ForumID");
+
+                entity.Property(e => e.Descriptor).HasMaxLength(1000);
+
+                entity.Property(e => e.ForumName)
+                    .IsRequired()
+                    .HasMaxLength(100);
 
                 entity.Property(e => e.PetId).HasColumnName("PetID");
 
@@ -191,9 +197,11 @@ namespace data_models
 
                 entity.Property(e => e.PetId).HasColumnName("PetID");
 
-                entity.Property(e => e.OwnerId).HasColumnName("OwnerID");
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(100);
 
-                entity.Property(e => e.PetName).HasMaxLength(100);
+                entity.Property(e => e.OwnerId).HasColumnName("OwnerID");
 
                 entity.HasOne(d => d.AggressionCodeNavigation)
                     .WithMany(p => p.Pets)

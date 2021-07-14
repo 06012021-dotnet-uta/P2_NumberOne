@@ -119,8 +119,7 @@ namespace utilities.forum
                         IsClaimed = x.IsClaimed,
                         PetId = x.PetId,
                         ForumName = x.ForumName,
-                        Description = x.Description
-
+                        Descriptor = x.Descriptor
                     });
                 }
             }
@@ -160,7 +159,6 @@ namespace utilities.forum
                 else
                 {
                     error = null;
-                    
                 }
 
             }

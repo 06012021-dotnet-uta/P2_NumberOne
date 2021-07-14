@@ -23,7 +23,7 @@ namespace utilities.Mapper
             cfg.CreateMap<RegisterCustomerRequest, Customer>();
             cfg.CreateMap<RegisterPetRequest, Pet>();
             cfg.CreateMap<CurrentLoggedInCustomer, Customer>();
-            
+            cfg.CreateMap<ForumCustom, Forum>();
         });
 
         public static IMapper Mapper = _mapperConfig.CreateMapper();

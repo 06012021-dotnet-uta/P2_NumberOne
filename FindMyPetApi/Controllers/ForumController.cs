@@ -88,11 +88,11 @@ namespace FindMyPetApi.Controllers
 
 
         [HttpGet("ForumDetails/{id}")]
-        public IActionResult SearchByForumId(int forumID)
+        public IActionResult SearchByForumId(int id)
         {
             string error;
 
-            var forum = _forumHandler.SearchForum(forumID, out error);
+            var forum = _forumHandler.SearchForumID(id, out error);
 
             if (forum == null)
             {
@@ -100,17 +100,17 @@ namespace FindMyPetApi.Controllers
             }
             else
             {
-                return StatusCode(200);
+                return StatusCode(200, forum);
             }
         }
 
 
         [HttpGet("ForumDetailsByPet/{id}")]
-        public IActionResult SearchForumByPetId(int petID)
+        public IActionResult SearchForumByPetId(int id)
         {
             string error;
 
-            var forum = _forumHandler.SearchForum(petID, out error);
+            var forum = _forumHandler.SearchForumPetID(id, out error);
 
             if (forum == null)
             {

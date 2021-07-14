@@ -14,6 +14,7 @@ using utilities;
 using data_models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using utilities.forum;
 
 namespace FindMyPetApi
 {
@@ -51,6 +52,7 @@ namespace FindMyPetApi
             services.AddScoped<IBreedHandler, BreedHandler>();
             services.AddScoped<IColorationHandler, ColorationHandler>();
             services.AddScoped<IPetHandler, PetHandler>();
+            services.AddScoped<IForumHandler, ForumHandler>();
 
 
         }
