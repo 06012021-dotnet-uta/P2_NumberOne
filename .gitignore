@@ -9,6 +9,7 @@
 *.sln.docstates
 */obj/*
 */bin/*
+*/node_modules/*
 
 # Build results
 *[Dd]ebug/
