@@ -2,13 +2,17 @@ import { Injectable } from "@angular/core";
 import { NGXLogger } from "ngx-logger";
 
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class Globals 
 {
 
-  localHost = 'https://localhost:44396/';
-  publicHost = 'http://temp.url/';
-  currentHostURL = 'https://localhost:44396/';
+  localHost: string = 'https://localhost:44396/';
+  publicHost: string = 'http://temp.url/';
+  currentURL: string = this.localHost;
+
+  currentHostURL() {
+    return this.currentURL;
+  }
 
   /**
    * Handle Http operation that failed.
