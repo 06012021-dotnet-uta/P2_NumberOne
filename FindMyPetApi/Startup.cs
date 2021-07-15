@@ -15,6 +15,7 @@ using data_models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using utilities.forum;
+using System.Web.Http.Cors;
 
 namespace FindMyPetApi
 {
