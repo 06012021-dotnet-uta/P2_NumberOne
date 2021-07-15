@@ -6,9 +6,10 @@ using utilities;
 using data_models;
 using data_models.custom;
 using Microsoft.AspNetCore.Http;
+using utilities.customer;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace WebApplication1.Controllers
+namespace FindMyPetApi.Controllers
 {
 
     [Route("api/[controller]")]
@@ -19,6 +20,8 @@ namespace WebApplication1.Controllers
 
         private readonly ILogger<CustomerController> _logger;
         private readonly ICustomerHandler _customerHandler;
+
+
         
         public CustomerController(ICustomerHandler customerHandler, ILogger<CustomerController> logger)
         {

@@ -14,6 +14,10 @@ namespace utilities
         private readonly ILogger<CategoryHandler> _logger;
         private Category _currentCategory;
 
+        public CategoryHandler(PetTrackerDBContext context)
+        {
+            _context = context;
+        }
 
         public CategoryHandler(PetTrackerDBContext context, ILogger<CategoryHandler> logger)
         {

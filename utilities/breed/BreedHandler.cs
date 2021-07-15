@@ -14,6 +14,10 @@ namespace utilities
         private readonly ILogger<BreedHandler> _logger;
         private Breed _currentBreed;
 
+        public BreedHandler(PetTrackerDBContext context)
+        {
+            _context = context;
+        }
         public BreedHandler(PetTrackerDBContext context, ILogger<BreedHandler> logger)
         {
             _context = context;
@@ -33,7 +37,7 @@ namespace utilities
                 categoryResult = _context.Categories.Where(y => y.CategoryId == regBreed.CategoryId).FirstOrDefault();
 
                 //Check to see if Breed with the same type is already registered
-                result = _context.Breeds.Where(x => x.Breed1 == regBreed.Breed1 && x.CategoryId == categoryResult.CategoryId).FirstOrDefault();
+                result = _context.Breeds.Where(x => x.Breed1 == regBreed.Breed1).FirstOrDefault();
 
                 //If no customer found then add to db
                 if (result == null)
@@ -43,8 +47,13 @@ namespace utilities
                     {
                         Breed1 = regBreed.Breed1
                     };
-                    breed.CategoryId = categoryResult.CategoryId;
-                    
+                    if (categoryResult == null)
+                    {
+                        breed.CategoryId = 0;
+                    }
+                    else {
+                        breed.CategoryId = categoryResult.CategoryId;
+                    }
                     breed = _context.Add(breed).Entity;
                     _context.SaveChanges();
 
