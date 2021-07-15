@@ -1,41 +1,25 @@
 import { Injectable } from '@angular/core';
-import { LoginComponent } from './login/login';
+import { LoginComponent } from './login/login.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { Globals } from './globals';
+import { NGXLogger } from "ngx-logger";
+import { Customer } from './customer/customer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private http: HttpClient, private messageService: MessageService) { }
+  constructor(private http: HttpClient) { }
 
-  private loginUrl = 'api/Login'; //Grabbed uri string from api
+  private loginUrl = 'https://localhost:44396/' + 'api/Login'; //Grabbed uri string from api
 
-  loginRequest(): Observable <Customer> {
-    return this.http.post<Customer>(this.loginUrl)
+  loginRequest(): Observable<any> {
+    return this.http.post<any>(this.loginUrl, {title: 'Login Request'})
     .pipe(
-      catchError(this.handleError<Customer>('loginRequest', []))
+      //catchError(Globals.handleError<Customer>('loginRequest', null, []))
     );
-  }
-
-  /**
-   * Handle Http operation that failed.
-   * Let the app continue.
-   * @param operation - name of the operation that failed
-   * @param result - optional value to return as the observable result
-   */
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
   } 
 }

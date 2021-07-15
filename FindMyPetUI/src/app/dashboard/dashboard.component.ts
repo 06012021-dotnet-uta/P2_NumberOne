@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { BreedListService, Breed } from '../breedList.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private breedListService: BreedListService) { 
+    this.ListofBreeds = [];
 
-  ngOnInit(): void {
   }
 
+  ListofBreeds: Breed[];
+
+  ngOnInit(): void {
+
+  }
+
+  onSubmit()
+  {
+    //this.ListofBreeds = this.breedListService.GetBreedList();
+    this.breedListService.GetBreedList().subscribe
+    (
+      ListofBreeds => this.ListofBreeds = ListofBreeds
+    )
+  }   
+
 }
+
+

@@ -55,7 +55,19 @@ namespace FindMyPetApi
             services.AddScoped<IPetHandler, PetHandler>();
             services.AddScoped<IForumHandler, ForumHandler>();
 
-
+            //Setting up CORS Pipe
+            services.AddCors((options) =>
+            {
+                options.AddPolicy(name: "dev", builder =>
+                {
+                    builder
+                    //.WithOrigins("https://localhost:4200/", "https://localhost:5000")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    //.AllowCredentials()
+                    .AllowAnyOrigin();
+                });
+            });
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -66,10 +78,13 @@ namespace FindMyPetApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "FindMyPetApi v1"));
             }
+            
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("dev"); //Set Up CORS Pipe
 
             app.UseAuthorization();
 

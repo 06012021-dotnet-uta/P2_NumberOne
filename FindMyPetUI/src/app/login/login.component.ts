@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NGXLogger } from "ngx-logger";
+import { LoginRequest } from "./loginRequest";
+import { LoginService } from "../login.service";
 
 @Component({
   selector: 'app-login',
@@ -7,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor() 
+  {
+    //this.logger.debug("LoginComponent Initialized.");
+  }
 
   ngOnInit(): void {
   }
