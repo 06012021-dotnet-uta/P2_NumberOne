@@ -12,6 +12,10 @@ import { CustomerComponent } from './customer/customer.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { Globals } from './globals';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { ForumPostsListComponent } from './forum-posts-list/forum-posts-list.component';
+import { ForumPostsListItemComponent } from './forum-posts-list-item/forum-posts-list-item.component';
+import { ForumPostFormComponent } from './forum-post-form/forum-post-form.component';
+import { OlCoordMapComponent } from './ol-coord-map/ol-coord-map.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { LoginFormComponent } from './login-form/login-form.component';
     LoginComponent,
     CustomerComponent,
     SignUpComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ForumPostsListComponent,
+    ForumPostsListItemComponent,
+    ForumPostFormComponent,
+    OlCoordMapComponent
   ],
   imports: [
     BrowserModule,
