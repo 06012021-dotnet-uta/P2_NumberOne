@@ -1,0 +1,29 @@
+<p>pet-registration works!</p>
+
+<div class="container">
+    <form #registerpetform="ngForm" (ngSubmit)="register(registerpetform)">
+        <input type="number" #ownerid (ngModel)= "ownerid" name="ownerid" placeholder="ownerid">
+        <input type="text" #name (ngModel)= "name" name="name" placeholder="name">
+        <app-gender></app-gender>
+        <app-aggression></app-aggression>
+        <app-category></app-category>
+        <input type="text" #age (ngModel)= "age" name="age" placeholder="age">
+        <input style="background-color: brown;" id="payment-method-card"  type="Submit" name="payment-method" value = "Registr" />
+    </form>    
+</div>
+
+
+
+<!--
+
+export interface RegisterPet {
+    petid: number;
+    ownerid: numberpoi
+    aggressioncode: number;
+    name: string;
+    category: number;
+    gender: number;
+    age: number;
+  }
+  
+  -->
