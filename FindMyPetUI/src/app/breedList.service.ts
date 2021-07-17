@@ -14,7 +14,7 @@ export class BreedListService {
   BreedUrl = 'api/Breed/List';
 
   GetBreedList(): Observable<Breed[]> {
-    return this.http.get<Breed[]>(this.global.currentHostURL()+this.BreedUrl)
+    return this.http.get<Breed[]>(this.global.currentHostURL() + this.BreedUrl)
       // .pipe(
       //   tap(_ => this.log('fetched breeds')),
       //   catchError(this.handleError<Breed[]>('getBreedList', []))

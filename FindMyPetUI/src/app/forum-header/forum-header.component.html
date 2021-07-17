@@ -1,0 +1,52 @@
+<div class="container">
+
+    <div class="input-group mb-3">
+        <input type="search" class="form-control" placeholder="Search Forum" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-success" type="button" (click)="searchForum()">Search</button>
+        </div>
+        <div class="input-group-append">
+            <button class="btn btn-primary" (click)="open(content)">New Forum</button>
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Forum</button> -->
+        </div>
+    </div>
+</div>
+
+
+<!-- MODAL -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">New Forum</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <form #forumdata="ngForm" (ngSubmit)="addForum(forumdata)">
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">PetID</label>
+
+                <input type="number" #petId (ngModel)="petId" name="petId" class="form-control" aria-describedby="emailHelp" min="0">
+
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Forum Title</label>
+                <input type="text" #forumName (ngModel)="forumName" name="forumName" class="form-control" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Description</label>
+                <input #descriptor (ngModel)="descriptor" name="descriptor" type="text" class="form-control">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" #isClaimed (ngModel)="isClaimed" class="form-check-input">
+                <label class="form-check-label" for="exampleCheck1">Is Register</label>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="modal.close('Save click')">Submit</button>
+
+
+            <!-- <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button> -->
+        </form>
+    </div>
+
+</ng-template>

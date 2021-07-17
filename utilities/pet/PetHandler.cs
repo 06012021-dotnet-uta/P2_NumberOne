@@ -32,9 +32,7 @@ namespace utilities
 
 
             try
-            {
-
-                                   
+            {                 
                     //Check to see if Pet with username is already registered
                 
                     var pet = ObjectMapper.Mapper.Map<RegisterPetRequest, Pet>(regPet);

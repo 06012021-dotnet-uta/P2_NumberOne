@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { CustomerComponent } from './customer/customer.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { ForumComponent } from './forum/forum.component';
 
 const routes: Routes = 
 [
@@ -11,7 +12,9 @@ const routes: Routes =
   { path: 'dashboard', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'customer', component: CustomerComponent },
-  { path: 'sign-up', component: SignUpComponent }
+  { path: 'sign-up', component: SignUpComponent },
+  { path: 'forum', component: ForumComponent }
+  
 ];
 
 @NgModule({

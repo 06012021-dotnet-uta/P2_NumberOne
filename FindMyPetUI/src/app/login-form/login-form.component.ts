@@ -31,7 +31,6 @@ export class LoginFormComponent implements OnInit {
   onSubmit()
   {
     this.submitted = true;
-
   }
 
 }
