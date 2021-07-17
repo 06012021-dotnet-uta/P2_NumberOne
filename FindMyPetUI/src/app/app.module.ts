@@ -12,6 +12,10 @@ import { CustomerComponent } from './customer/customer.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { Globals } from './globals';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { GenderComponent } from './gender/gender.component';
+import { CategoryComponent } from './category/category.component';
+import { AggressionComponent } from './aggression/aggression.component';
+import { PetRegistrationComponent } from './pet-registration/pet-registration.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { LoginFormComponent } from './login-form/login-form.component';
     LoginComponent,
     CustomerComponent,
     SignUpComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    GenderComponent,
+    CategoryComponent,
+    AggressionComponent,
+    PetRegistrationComponent
   ],
   imports: [
     BrowserModule,
