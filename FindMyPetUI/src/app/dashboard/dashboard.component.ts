@@ -24,8 +24,8 @@ export class DashboardComponent implements OnInit {
 
   onSubmit()
   {
-    //this.ListofBreeds = this.breedListService.GetBreedList();
-    this.breedListService.GetBreedList().subscribe
+    this.breedListService.GetBreedList()
+    .subscribe
     (
       ListofBreeds => this.ListofBreeds = ListofBreeds
     )

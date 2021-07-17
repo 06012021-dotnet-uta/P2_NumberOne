@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../customer/customer';
-import { LoginService } from '../login.service';
+import { LoginService, UserInfo } from '../login.service';
+import { FormControl, FormGroup } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
@@ -9,29 +11,22 @@ import { LoginService } from '../login.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService: LoginService) 
+  { 
+    this.model = new UserInfo('','');
+  }
 
   ngOnInit(): void {
   }
 
-  model = new Customer(
-    "User Name",
-    "",
-    0,
-    "First Name",
-    "Last Name",
-    "example@mail.com",
-    0.0,
-    0.0,
-    0,
-    8008888888,
-    12345);
-
   submitted = false;
+  
+  model: UserInfo;
+
   onSubmit()
   {
     this.submitted = true;
-
+    this.loginService.loginRequest(this.model);
+    console.log("LoginRequested");
   }
-
 }
