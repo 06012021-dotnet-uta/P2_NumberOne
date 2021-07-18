@@ -160,6 +160,39 @@ namespace utilities.forum
             return forum;
         }
 
+        /// <summary>
+        /// Search forum by Name
+        /// </summary>
+        /// <param name="forumName"></param>
+        /// <param name="error"></param>
+        /// <returns></returns>
+        public Forum SearchForumName(string forumName, out string error)
+        {
+            Forum forum = null;
+
+            try
+            {
+
+                forum = _context.Forums.Where(x => x.ForumName == forumName).FirstOrDefault();
+
+                if (forum == null)
+                {
+                    error = "ForumID not found in the DB";
+
+                }
+                else
+                {
+                    error = null;
+                }
+
+            }
+            catch (ArgumentNullException e)
+            {
+                error = "Something Wrong in SearchForum() method";
+            }
+
+            return forum;
+        }
 
 
         public Forum SearchForumPetID(int petID, out string error)

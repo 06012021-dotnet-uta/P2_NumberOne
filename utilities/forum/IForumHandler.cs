@@ -15,5 +15,6 @@ namespace utilities.forum
         List<Forum> ShowForumList(out string error);
         Forum SearchForumID(int forumID, out string error);
         Forum SearchForumPetID(int petID, out string error);
+        Forum SearchForumName(string forumName, out string error);
     }
 }

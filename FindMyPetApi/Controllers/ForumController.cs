@@ -103,6 +103,24 @@ namespace FindMyPetApi.Controllers
         }
 
 
+        [HttpGet("ForumDetailsByName")]
+        public IActionResult SearchByForumName(string forumName)
+        {
+            string error;
+
+            var forum = _forumHandler.SearchForumName(forumName, out error);
+
+            if (forum == null)
+            {
+                return StatusCode(400, error);
+            }
+            else
+            {
+                return StatusCode(200, forum);
+            }
+        }
+
+
         [HttpGet("ForumDetailsByPet/{id}")]
         public IActionResult SearchForumByPetId(int id)
         {

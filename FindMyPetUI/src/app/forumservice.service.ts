@@ -33,9 +33,8 @@ export class ForumserviceService {
      return this.http.get('https://localhost:44396/api/Forum/DeleteForum/' + forumID)
   }
 
-  // SearchForum(forumId: number){
-  //   return this.http.get('https://localhost:44396/api/Forum/ForumDetails/' + forumId)
-  // }
-
+   SearchForum(forum: string){
+     return this.http.get('https://localhost:44396/api/Forum/ForumDetailsByName/' + forum)
+   }
 
 }

@@ -39,10 +39,15 @@ export class ForumHeaderComponent implements OnInit {
     );
   }
 
-  
 
   searchForum(forumName: string){
-    console.log();
+    this.forumservice.SearchForum(forumName).subscribe(
+      
+    //   (resp) => {console.log(resp);
+    //     forumName.reset();
+    //   },
+    //    (err) => {console.log(err);}
+     );
    }
 
 
