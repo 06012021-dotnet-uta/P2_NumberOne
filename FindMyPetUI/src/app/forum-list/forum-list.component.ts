@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Forum } from '../Forum';
 import { ForumserviceService } from '../forumservice.service';
-import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-forum-list',

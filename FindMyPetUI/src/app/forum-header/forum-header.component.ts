@@ -4,6 +4,8 @@ import { ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { ForumserviceService } from '../forumservice.service';
 import { Forum } from '../Forum';
+import { ThisReceiver } from '@angular/compiler';
+
 
 
 @Component({
@@ -14,10 +16,12 @@ import { Forum } from '../Forum';
 })
 export class ForumHeaderComponent implements OnInit {
 
-  forums?: Forum[];
-
+  
   constructor(private modalService: NgbModal, private forumservice: ForumserviceService) { 
+    this.ListofForum = [];
   }
+
+  ListofForum: Forum[];
 
   closeResult = '';
   
@@ -27,23 +31,19 @@ export class ForumHeaderComponent implements OnInit {
   // Events go here
   addForum(forumdata: NgForm): void{
     this.forumservice.AddForum(forumdata.value).subscribe(
+      
       (resp) => {console.log(resp);
         forumdata.reset();
       },
-      (err) => {console.log(err);}
+       (err) => {console.log(err);}
     );
   }
 
-  // addForum(forumdata: Forum): void{
-  //   this.forumservice.AddForum(forumdata).subscribe(
-  //     x => this.forums?.push(x),
-  //     y => console.log('there was a problem adding the player')
-  //   );
-  // }
+  
 
-  searchForum(){
-    console.log('Search');
-  }
+  searchForum(forumName: string){
+    console.log();
+   }
 
 
   // Modal functions
