@@ -80,6 +80,27 @@ namespace FindMyPetApi.Controllers
             }
         }
 
+        [HttpGet("GenderList")]
+        public IActionResult GenderListController()
+        {
+            var result = _petHandler.GenderList();
+
+            if (result == null)
+                return StatusCode(404);
+            else
+                return StatusCode(201, result);
+        }
+
+        [HttpGet("AggressionList")]
+        public IActionResult AggressionListController()
+        {
+            var result = _petHandler.AggressionCodeList();
+
+            if (result == null)
+                return StatusCode(404);
+            else
+                return StatusCode(201, result);
+        }
 
 
 

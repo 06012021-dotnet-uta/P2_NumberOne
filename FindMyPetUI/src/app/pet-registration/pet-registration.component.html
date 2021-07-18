@@ -2,12 +2,45 @@
 
 <div class="container">
     <form #registerpetform="ngForm" (ngSubmit)="register(registerpetform)">
-        <input type="number" #ownerid (ngModel)= "ownerid" name="ownerid" placeholder="ownerid">
+       
         <input type="text" #name (ngModel)= "name" name="name" placeholder="name">
-        <app-gender></app-gender>
-        <app-aggression></app-aggression>
-        <app-category></app-category>
-        <input type="text" #age (ngModel)= "age" name="age" placeholder="age">
+
+        <input type="number" #age (ngModel)= "age" name="age" placeholder="age">
+
+        <!--Aggression-->
+        <label>Aggression</label>
+        <select name="aggressions" id="aggressions">
+            <option *ngFor="let aggression of ListofAggression"  #aggressioncode (ngModel)= "aggressioncode"  >{{aggression.code}}</option>
+        </select>
+        <select name="Categories" id="Categories">
+            <option *ngFor="let aggression of ListofAggression"  >{{aggression.descriptor}}</option>
+        </select>
+
+ 
+
+        <label>Gender</label>
+        <!--Pet-->
+        <select name="Genders" id="Genders">
+            <option *ngFor="let gender of ListofGender" #gender (ngModel)= "gender"   >{{gender.code}}</option>
+        </select>
+        <select name="Genders" id="Genders">
+            <option *ngFor="let gender of ListofGender"  >{{gender.gender1}}</option>
+        </select>
+       
+
+        
+        
+        <!--category-->
+        <label>Category</label>
+        <select name="Categories" id="Categories">
+            <option *ngFor="let category of ListofCategory" #category (ngModel)= "category" >{{category.categoryId}}</option>
+        </select>
+        <select name="Categories" id="Categories">
+            <option *ngFor="let category of ListofCategory"  >{{category.type }}</option>
+        </select>
+        
+        
+        
         <input style="background-color: brown;" id="payment-method-card"  type="Submit" name="payment-method" value = "Registr" />
     </form>    
 </div>
