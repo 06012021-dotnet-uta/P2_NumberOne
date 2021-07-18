@@ -1,0 +1,9 @@
+.login-card{
+	margin:  auto;
+	box-shadow: 6px 3px lightgray;
+	display:  flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 20rem;
+	height: 23rem;
+}

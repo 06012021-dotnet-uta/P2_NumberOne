@@ -12,6 +12,7 @@ namespace utilities
         List<Pet> PetList();
         Pet PetDetails(int id);
         Pet SearchPetByOwnerId(int Ownerid, out string error);
-
+        List<Gender> GenderList();
+        List<AggressionCode> AggressionCodeList();
     }
 }

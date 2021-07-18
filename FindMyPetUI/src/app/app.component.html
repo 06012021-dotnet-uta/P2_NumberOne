@@ -1,21 +1,32 @@
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-    <div class="container-fluid">
-        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-            <ul class="navbar-nav flex-grow-1">
-                <li class="nav-item">
-                    <a class="nav-link text-white" routerLink="/dashboard">
-                        <h1>{{title}}</h1>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" routerLink="/login">Login Here</a>
-                </li>
-                <li>
-                    <a class="nav-link text-white" routerLink="/sign-up">Sign Up</a>
-                </li>
-            </ul>
-        </div>
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+  <div class="container-fluid">
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+      <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item">
+            <a class="nav-link text-dark" routerLink="/dashboard"><h1>{{title}}</h1></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" routerLink="/login">Login Here</a>
+        </li>
+        <li>
+            <a class="nav-link text-dark" routerLink="/sign-up">Sign Up</a>
+        </li>
+        <li>
+            <a class="nav-link text-dark" routerLink="/gender">Gender</a>
+        </li>
+        <li>
+            <a class="nav-link text-dark" routerLink="/category">category</a>
+        </li>
+        <li>
+            <a class="nav-link text-dark" routerLink="/aggression">Aggression</a>
+        </li>
+        <li>
+         <a class="nav-link text-dark" routerLink="/pet-registration">Register a Pet</a>
+        </li>
+
+      </ul>
     </div>
+  </div>
 </nav>
 
 <router-outlet></router-outlet>

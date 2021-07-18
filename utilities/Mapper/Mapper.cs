@@ -24,6 +24,7 @@ namespace utilities.Mapper
             cfg.CreateMap<RegisterPetRequest, Pet>();
             cfg.CreateMap<CurrentLoggedInCustomer, Customer>();
             cfg.CreateMap<ForumCustom, Forum>();
+            cfg.CreateMap<CreatePostRequest, Post>();
         });
 
         public static IMapper Mapper = _mapperConfig.CreateMapper();

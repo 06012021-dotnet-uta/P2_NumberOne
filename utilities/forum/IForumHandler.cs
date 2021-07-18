@@ -16,5 +16,10 @@ namespace utilities.forum
         Forum SearchForumID(int forumID, out string error);
         Forum SearchForumPetID(int petID, out string error);
         Forum SearchForumName(string forumName, out string error);
+        //Tyler
+        Post CreatePost(int id, CreatePostRequest createPostRequest, out string error);
+        List<Post> GetPosts(int id, out string error);
+        Post GetPost(int forumId, int postId, out string error);
+
     }
 }

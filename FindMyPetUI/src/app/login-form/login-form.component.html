@@ -1,13 +1,18 @@
 <div class="container">
-    <form>
-        <h2>Customer Login</h2>
+    <form #loginForm="ngForm">
+        <h2>User Login</h2>
         <div class="form-group">
-            <label for="exampleInputEmail1">Username</label>
-            <input type="text" name="userName" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter UserName">
+            <label for="model">Username</label>
+            <input type="text" [(ngModel)]="model.username" name="username" class="form-control" placeholder="Enter UserName" required>
         </div>
+        <br>
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control" id="password" placeholder="Enter Password">
+            <label for="model">Password</label>
+            <input type="password" [(ngModel)]="model.password" name="password" class="form-control" placeholder="Enter Password" required>
         </div>
+        <br>
+        <button type="submit" class="btn btn-success" (click)=onSubmit()>Log In</button>
     </form>
 </div>
+
+

@@ -1,0 +1,8 @@
+<h4>Post Form</h4>
+<form (ngSubmit)="onSubmit()">
+    Post text body: <input type="text" class="form-control" id="textBody" [(ngModel)]="postModel.textBody" name="textBody">
+    <!--OpenLayers map input goes here-->
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<app-ol-coord-map></app-ol-coord-map>
