@@ -28,5 +28,5 @@ export class LoginFormComponent implements OnInit {
     this.submitted = true;
     this.loginService.loginRequest(this.model);
     console.log("LoginRequested");
-  }
+}
 }

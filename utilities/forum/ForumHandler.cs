@@ -103,25 +103,15 @@ namespace utilities.forum
         /// </summary>
         /// <param name="error"></param>
         /// <returns></returns>
-        public List<ForumCustom> ShowForumList(out string error)
+        public List<Forum> ShowForumList(out string error)
         {
-            List<ForumCustom> forumList = null;
+            List<Forum> forumList = null;
 
             try
             {
-                var forumDB = _context.Forums.ToList();
+                forumList = _context.Forums.ToList();
 
-                foreach(var x in forumDB)
-                {
-                    forumList.Add(new ForumCustom
-                    {
-                        ForumId = x.ForumId,
-                        IsClaimed = x.IsClaimed,
-                        PetId = x.PetId,
-                        ForumName = x.ForumName,
-                        Descriptor = x.Descriptor
-                    });
-                }
+                
             }
             catch (ArgumentNullException ex)
             {

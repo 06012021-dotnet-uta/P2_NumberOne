@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using data_models;
+using data_models.custom;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
 using utilities;
-using data_models;
-using data_models.custom;
-using Microsoft.AspNetCore.Http;
 using utilities.forum;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -51,7 +49,7 @@ namespace FindMyPetApi.Controllers
         }
 
 
-        [HttpGet("DeleteForum")]
+        [HttpGet("DeleteForum/{forumID}")]
         public IActionResult DeleteForum(int forumID)
         {
             string error;
@@ -73,7 +71,7 @@ namespace FindMyPetApi.Controllers
         {
 
             string error;
-            List<ForumCustom> forumList = _forumHandler.ShowForumList(out error);
+            List<Forum> forumList = _forumHandler.ShowForumList(out error);
 
             if(forumList == null)
             {
@@ -81,7 +79,7 @@ namespace FindMyPetApi.Controllers
             }
             else
             {
-                return StatusCode(200);
+                return StatusCode(200,forumList);
             }
 
         }

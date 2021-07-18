@@ -8,7 +8,7 @@ import { GenderComponent } from './gender/gender.component';
 import { CategoryComponent } from './category/category.component';
 import { AggressionComponent } from './aggression/aggression.component';
 import { PetRegistrationComponent } from './pet-registration/pet-registration.component';
-
+import { ForumComponent } from './forum/forum.component';
 
 const routes: Routes = 
 [
@@ -21,7 +21,7 @@ const routes: Routes =
   { path: 'category', component: CategoryComponent },
   { path: 'aggression', component: AggressionComponent },
   { path: 'pet-registration', component: PetRegistrationComponent },
-
+  { path: 'forum', component: ForumComponent }
 ];
 
 @NgModule({
