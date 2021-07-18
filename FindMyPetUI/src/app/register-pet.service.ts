@@ -57,8 +57,6 @@ export interface RegisterPet {
   category: number;
   gender: number;
   age: number;
-
-  
 }
 
 export interface GenderInteface {
