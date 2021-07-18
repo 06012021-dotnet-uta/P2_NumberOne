@@ -20,6 +20,10 @@ import { PetRegistrationComponent } from './pet-registration/pet-registration.co
 import { ForumHeaderComponent } from './forum-header/forum-header.component';
 import { ForumComponent } from './forum/forum.component';
 import { ForumListComponent } from './forum-list/forum-list.component';
+import { ForumPostsListComponent } from './forum-posts-list/forum-posts-list.component';
+import { ForumPostsListItemComponent } from './forum-posts-list-item/forum-posts-list-item.component';
+import { ForumPostFormComponent } from './forum-post-form/forum-post-form.component';
+import { OlCoordMapComponent } from './ol-coord-map/ol-coord-map.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { ForumListComponent } from './forum-list/forum-list.component';
     PetRegistrationComponent,
     ForumHeaderComponent,
     ForumComponent,
-    ForumListComponent
+    ForumListComponent,
+    ForumPostsListComponent,
+    ForumPostsListItemComponent,
+    ForumPostFormComponent,
+    OlCoordMapComponent
   ],
   imports: [
     BrowserModule,

@@ -120,7 +120,41 @@ namespace FindMyPetApi.Controllers
             }
         }
 
+        [HttpPost("{id}/Posts/Create")]
+        public IActionResult CreatePost(int id, CreatePostRequest createPostRequest)
+        {
+            string error;
+            var post = _forumHandler.CreatePost(id, createPostRequest, out error);
 
+            if (post != null)
+                return StatusCode(201, post);
+            else
+                return StatusCode(400, error);
+        }
+
+        [HttpGet("{id}/Posts/List")]
+        public IActionResult ListPosts(int id)
+        {
+            string error;
+            var posts = _forumHandler.GetPosts(id, out error);
+
+            if (posts.Count > 0)
+                return StatusCode(200, posts);
+            else
+                return StatusCode(400, error);
+        }
+
+        [HttpGet("{forumId}/Posts/{postId}")]
+        public IActionResult ListPosts(int forumId, int postId)
+        {
+            string error;
+            var post = _forumHandler.GetPost(forumId, postId, out error);
+
+            if (post != null)
+                return StatusCode(200, post);
+            else
+                return StatusCode(400, error);
+        }
 
 
 
