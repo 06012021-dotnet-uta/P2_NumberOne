@@ -103,25 +103,15 @@ namespace utilities.forum
         /// </summary>
         /// <param name="error"></param>
         /// <returns></returns>
-        public List<ForumCustom> ShowForumList(out string error)
+        public List<Forum> ShowForumList(out string error)
         {
-            List<ForumCustom> forumList = null;
+            List<Forum> forumList = null;
 
             try
             {
-                var forumDB = _context.Forums.ToList();
+                forumList = _context.Forums.ToList();
 
-                foreach(var x in forumDB)
-                {
-                    forumList.Add(new ForumCustom
-                    {
-                        ForumId = x.ForumId,
-                        IsClaimed = x.IsClaimed,
-                        PetId = x.PetId,
-                        ForumName = x.ForumName,
-                        Descriptor = x.Descriptor
-                    });
-                }
+                
             }
             catch (ArgumentNullException ex)
             {
@@ -164,6 +154,7 @@ namespace utilities.forum
             }
             catch(ArgumentNullException e)
             {
+                _logger.Log(LogLevel.Error, e.Message);
                 error = "Something Wrong in SearchForum() method";
             }
 
@@ -195,10 +186,69 @@ namespace utilities.forum
             }
             catch (ArgumentNullException e)
             {
+                _logger.Log(LogLevel.Error, e.Message);
                 error = "Something Wrong in SearchForumPetID() method";
             }
 
             return forum;
+        }
+
+        public Post CreatePost(int id, CreatePostRequest createPostRequest, out string error)
+        {
+            error = null;
+            Post newPost = null;
+            try
+            {
+                newPost = ObjectMapper.Mapper.Map<CreatePostRequest, Post>(createPostRequest);
+                newPost.ForumId = id;
+                newPost.PostTime = DateTime.Now;
+
+                _context.Posts.Add(newPost);
+                _context.SaveChanges();
+
+            }
+            catch (Exception e)
+            {
+                _logger.Log(LogLevel.Error, e.Message);
+                error = e.Message;
+            }
+
+            return newPost;
+
+        }
+
+        public List<Post> GetPosts(int id, out string error)
+        {
+            List<Post> posts;
+            error = null;
+
+            posts = _context.Posts.Where(x => x.ForumId == id).ToList();
+
+            if (posts.Count < 1)
+            {
+                error = "No posts found";
+
+                _logger.Log(LogLevel.Warning, error);
+            }
+
+            return posts;
+        }
+
+        public Post GetPost(int forumId, int postId, out string error)
+        {
+            Post post = null;
+            error = null;
+            try
+            {
+                post = _context.Posts.Where(x => x.ForumId == forumId && x.PostId == postId).FirstOrDefault();
+            }
+            catch(Exception e)
+            {
+                _logger.Log(LogLevel.Error, e.Message);
+                error = e.Message;
+            }
+
+            return post;
         }
 
     }

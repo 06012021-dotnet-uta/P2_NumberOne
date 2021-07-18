@@ -14,7 +14,7 @@ namespace data_models.custom
         public int Category { get; set; }
         public int Gender { get; set; }
         public int? Age { get; set; }
-        public string PetName { get; set; }
+        public string Name { get; set; }
 
     }
 }

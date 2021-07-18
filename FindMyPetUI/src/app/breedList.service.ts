@@ -7,6 +7,7 @@ import { Globals } from './globals';
 @Injectable({
   providedIn: 'root'
 })
+
 export class BreedListService {
 
   constructor(private http: HttpClient, private global: Globals) { }
@@ -15,10 +16,6 @@ export class BreedListService {
 
   GetBreedList(): Observable<Breed[]> {
     return this.http.get<Breed[]>(this.global.currentHostURL()+this.BreedUrl)
-      // .pipe(
-      //   tap(_ => this.log('fetched breeds')),
-      //   catchError(this.handleError<Breed[]>('getBreedList', []))
-      // );
   } 
 }
 

@@ -1,0 +1,8 @@
+<p>aggression</p>
+
+<select name="aggressions" id="aggressions">
+    <option *ngFor="let aggression of ListofAggression" #code  >{{aggression.code}}</option>
+</select>
+<select name="Categories" id="Categories">
+    <option *ngFor="let aggression of ListofAggression"  >{{aggression.descriptor}}</option>
+</select>

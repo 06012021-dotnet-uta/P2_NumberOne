@@ -32,13 +32,11 @@ namespace utilities
 
 
             try
-            {
-
-                                   
+            {                 
                     //Check to see if Pet with username is already registered
                 
                     var pet = ObjectMapper.Mapper.Map<RegisterPetRequest, Pet>(regPet);
-                pet.OwnerId =  customer.LoggedinCustomer._LoggedInCustomerInfo .CustomerId;
+                    pet.OwnerId =  customer.LoggedinCustomer._LoggedInCustomerInfo.CustomerId;
 
                     pet = _context.Add(pet).Entity;
                     _context.SaveChanges();

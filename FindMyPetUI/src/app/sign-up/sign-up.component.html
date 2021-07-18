@@ -1,1 +1,37 @@
-<p>sign-up works!</p>
+<div class="container">
+    <form #registerform="ngForm" (ngSubmit)="register(registerform)">
+        <div class="row">
+            <h2>New User Registration</h2>
+            <div class="form-floating">
+                <input class="form-control" type="text" #firstname (ngModel)= "firstname" name="firstname" placeholder="first name" id="floatingFirst">
+                <label for="floatingFirst">First Name</label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" type="text" #lastname (ngModel)= "lastname" name="lastname" placeholder="last name" id="floatingLast">
+                <label for="floatingLast">Last Name</label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" type="text" #username (ngModel)= "username" name="username" placeholder="username" id="Username" id="floatingUsername">
+                <label for="floatingUsername">Username</label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" type="password" #password (ngModel)= "password" name="password" placeholder="password" id="floatingPass">
+                <label for="floatingPass">Password</label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" type="email" #email (ngModel)= "email" name="email" placeholder="email" id="floatingEmail">
+                <label for="floatingEmail">Email</label>
+            </div>
+            <div class="form-floating">
+                <input class="form-control" type="number" #zipcode (ngModel)= "zipcode" name="zipcode" placeholder="zipcode" id="floatingZip">
+                <label for="floatingZip">Zip Code</label>
+            </div>
+            <!-- <div class="form-floating">
+                <label for="floatingPhone">Phone Number</label>
+                <input class="form-control" type="number" #phone (ngModel)= "phone" name="phone" placeholder="phone" id="floatingPhone"> 
+            </div> -->
+            <br>
+            <input class="btn btn-success" id="payment-method-card"  type="Submit" name="payment-method" value = "Register" />
+        </div>
+    </form>    
+</div>

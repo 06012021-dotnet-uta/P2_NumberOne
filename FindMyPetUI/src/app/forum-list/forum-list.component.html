@@ -1,0 +1,11 @@
+<div class="card">
+    <div class="card-header">
+        {{forumobj.isClaimed}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{forumobj.forumName}}</h5>
+        <p class="card-text">{{forumobj.descriptor}}</p>
+        <a href="#" class="btn btn-success">Post</a>
+        <button type="submit" class="btn btn-danger" (click)='deleteForum(forumobj.forumId)'>Delete</button>
+    </div>
+</div>

@@ -1,7 +1,14 @@
-<p>dashboard works!</p>
-<button type="submit" class="btn btn-primary" (click)='onSubmit()'>DO THE THING</button>
-<ul> 
-	<li *ngFor="let breed of ListofBreeds">
-		{{breed.breedId}} & {{breed.breed1}}
-	</li>
-</ul>
+<div class="container">
+
+    <p>dashboard works!</p>
+    <button type="submit" class="btn btn-primary" (click)='onSubmit()'>DO THE THING</button>
+    <ul>
+        <li *ngFor="let breed of ListofBreeds">
+            {{breed.breedId}} & {{breed.breed1}}
+        </li>
+    </ul>
+
+    <a routerLink="/forum"><button class="btn btn-success pull-right">TO FORUM</button></a>
+
+
+</div>

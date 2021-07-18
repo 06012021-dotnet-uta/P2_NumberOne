@@ -403,6 +403,473 @@ namespace Testing
 
 
 
+/* ============================= GUILLERMO TEST =============================================*/
+         [Fact]
+        public void CreateCorrectlyANewForum()
+        {
+            // Arrange
+            string error;
+
+            // Create a forum dummy
+            ForumCustom forum = new ForumCustom() {
+
+                ForumName = "My Michu",
+                Descriptor = "Lost Pet",
+                PetId = 0,
+                IsClaimed = true,
+            };
+
+            // Act
+
+            using (var context = new PetTrackerDBContext(options))
+            {
+                //verify that the db was deleted and created anew
+                context.Database.EnsureDeleted();//delete any Db from a previous test
+
+                context.Database.EnsureCreated();// create a new Db.. you will need to seed it again.
+
+                ForumHandler forumTest = new ForumHandler(context);
+
+                forumTest.CreateNewForum(forum, out error);
+
+                context.SaveChanges();
+            }
+            // Assert
+            using (var context = new PetTrackerDBContext(options))
+            {
+                Forum forum1 = context.Forums.Where(x => x.ForumName == "My Michu").FirstOrDefault();
+                Assert.NotNull(forum1);
+                Assert.Equal("Lost Pet", forum1.Descriptor);
+                Assert.Equal("My Michu", forum1.ForumName);
+                Assert.True(forum1.IsClaimed);
+                Assert.Equal(0, forum1.PetId);
+                Assert.Equal(1, forum1.ForumId);
+
+            }
+
+        }
+
+
+        [Fact]
+        public void DeleteCorectlyOneForum()
+        {
+            //Arrange
+            string error;
+            bool result = false;
+
+            // Create a forum dummy
+            ForumCustom forum = new ForumCustom()
+            {
+
+                ForumName = "My Michu",
+                Descriptor = "Lost Pet",
+                PetId = 0,
+                IsClaimed = true,
+            };
+            //Act
+            using (var context = new PetTrackerDBContext(options))
+            {
+                //verify that the db was deleted and created anew
+                context.Database.EnsureDeleted();//delete any Db from a previous test
+
+                context.Database.EnsureCreated();// create a new Db.. you will need to seed it again.
+
+                ForumHandler forumTest = new ForumHandler(context);
+
+                forumTest.CreateNewForum(forum, out error);
+
+                context.SaveChanges();
+
+                result = forumTest.DeletedForum(1, out error);
+
+                context.SaveChanges();
+            }
+            //Assert
+            using (var context = new PetTrackerDBContext(options))
+            {
+                Forum forum1 = context.Forums.Where(x => x.ForumName == "My Michu").FirstOrDefault();
+
+                Assert.True(result);
+                Assert.Null(forum1);
+
+            }
+        }
+
+
+
+        [Fact]
+        public void CheckListOfForum()
+        {
+            //Arrange
+
+            string error;
+
+            // Create a forum dummy
+            ForumCustom forum1 = new ForumCustom()
+            {
+
+                ForumName = "My Michu1",
+                Descriptor = "Lost Pet1",
+                PetId = 0,
+                IsClaimed = true,
+            };
+
+            ForumCustom forum2 = new ForumCustom()
+            {
+
+                ForumName = "My Michu2",
+                Descriptor = "Lost Pet2",
+                PetId = 1,
+                IsClaimed = true,
+            };
+
+            ForumCustom forum3 = new ForumCustom()
+            {
+
+                ForumName = "My Michu3",
+                Descriptor = "Lost Pet3",
+                PetId = 2,
+                IsClaimed = true,
+            };
+
+
+            //Act
+            using (var context = new PetTrackerDBContext(options))
+            {
+                //verify that the db was deleted and created anew
+                context.Database.EnsureDeleted();//delete any Db from a previous test
+
+                context.Database.EnsureCreated();// create a new Db.. you will need to seed it again.
+
+                ForumHandler forumTest = new ForumHandler(context);
+
+                forumTest.CreateNewForum(forum1, out error);
+                forumTest.CreateNewForum(forum2, out error);
+                forumTest.CreateNewForum(forum3, out error);
+
+
+                context.SaveChanges();
+                //Assert
+
+                List<Forum> list2 = forumTest.ShowForumList(out error);
+
+                Assert.NotNull(list2);
+                Assert.Collection(list2,
+                item => Assert.Equal(0, item.PetId),
+                item => Assert.Equal(1, item.PetId),
+                item => Assert.Equal(2, item.PetId)
+                );
+            }
+        }
+
+        [Fact]
+        public void TestForSearchForumById()
+        {
+            //Arrange
+            // Arrange
+            string error;
+
+            // Create a forum dummy
+            ForumCustom forum1 = new ForumCustom()
+            {
+
+                ForumName = "My Michu1",
+                Descriptor = "Lost Pet1",
+                PetId = 0,
+                IsClaimed = true,
+            };
+
+
+            ForumCustom forum2 = new ForumCustom()
+            {
+                ForumName = "My Michu2",
+                Descriptor = "Lost Pet2",
+                PetId = 1,
+                IsClaimed = true,
+            };
+
+
+            //Act
+            using (var context = new PetTrackerDBContext(options))
+            {
+                //verify that the db was deleted and created anew
+                context.Database.EnsureDeleted();//delete any Db from a previous test
+
+                context.Database.EnsureCreated();// create a new Db.. you will need to seed it again.
+
+                ForumHandler forumTest = new ForumHandler(context);
+
+                forumTest.CreateNewForum(forum1, out error);
+                forumTest.CreateNewForum(forum2, out error);
+                
+                context.SaveChanges();
+
+
+                //Assert
+
+                Forum test1 = forumTest.SearchForumID(1, out error);
+                Forum test2 = forumTest.SearchForumID(2, out error);
+
+                //Assert
+
+                Assert.Equal(1, test1.ForumId);
+                Assert.Equal(2, test2.ForumId);
+
+            }    
+        }
+
+        [Fact]
+        public void TestForSearchForumByPetId()
+        {
+            
+            // Arrange
+            string error;
+
+            // Create a forum dummy
+            ForumCustom forum1 = new ForumCustom()
+            {
+
+                ForumName = "My Michu1",
+                Descriptor = "Lost Pet1",
+                PetId = 0,
+                IsClaimed = true,
+            };
+
+
+            ForumCustom forum2 = new ForumCustom()
+            {
+                ForumName = "My Michu2",
+                Descriptor = "Lost Pet2",
+                PetId = 1,
+                IsClaimed = true,
+            };
+
+
+            //Act
+            using (var context = new PetTrackerDBContext(options))
+            {
+                //verify that the db was deleted and created anew
+                context.Database.EnsureDeleted();//delete any Db from a previous test
+
+                context.Database.EnsureCreated();// create a new Db.. you will need to seed it again.
+
+                ForumHandler forumTest = new ForumHandler(context);
+
+                forumTest.CreateNewForum(forum1, out error);
+                forumTest.CreateNewForum(forum2, out error);
+
+                context.SaveChanges();
+
+
+                //Assert
+
+                Forum test1 = forumTest.SearchForumID(1, out error);
+                Forum test2 = forumTest.SearchForumID(2, out error);
+
+                //Assert
+
+                Assert.Equal(0, test1.PetId);
+                Assert.Equal(1, test2.PetId);
+
+            }
+
+
+        }
+
+        // ==================== Coloration Test =============== //
+        [Fact]
+        public void CreateCorrectlyANewColor()
+        {
+
+            // Arrange
+            string error;
+
+            // Create a coloration dummy
+            RegisterColorationRequest coloration = new RegisterColorationRequest()
+            {
+                Color1 = "White",
+                Color2 = "Blue",
+                Pattern = "Stripes"
+            };
+
+
+            // Act
+            using (var context = new PetTrackerDBContext(options))
+            {
+                // verify that the db was deleted and created anew
+                context.Database.EnsureDeleted();// delete any Db from a previous test
+
+                context.Database.EnsureCreated();// create a new Db.. you will need to seed it again.
+
+                ColorationHandler colorHandler = new ColorationHandler(context);
+
+                var color = colorHandler.CreateColoration(coloration, out error);
+
+                context.SaveChanges();
+
+                var color2 = context.Colorations.Where(x => x.ColorationId == 1).FirstOrDefault();
+
+
+                // Assert
+                Assert.NotNull(color2);
+                Assert.Equal(1, color2.ColorationId);
+                Assert.Equal("White", color2.Color1);
+                Assert.Equal("Blue", color2.Color2);
+                Assert.Equal("Stripes", color2.Pattern);
+
+            }  
+        }
+
+
+        [Fact]
+        public void CheckListOfColoration()
+        {
+            //Arrange
+            string error;
+
+            RegisterColorationRequest coloration1 = new RegisterColorationRequest()
+            {
+                Color1 = "White",
+                Color2 = "Blue",
+                Pattern = "Stripes"
+            };
+
+
+            RegisterColorationRequest coloration2 = new RegisterColorationRequest()
+            {
+                Color1 = "Red",
+                Color2 = "Yellow",
+                Pattern = "Dots"
+            };
+
+
+            RegisterColorationRequest coloration3 = new RegisterColorationRequest()
+            {
+                Color1 = "Orange",
+                Color2 = "Black",
+                Pattern = "Solid"
+            };
+
+            //Act
+            using (var context = new PetTrackerDBContext(options))
+            {
+                //verify that the db was deleted and created anew
+                context.Database.EnsureDeleted();//delete any Db from a previous test
+
+                context.Database.EnsureCreated();// create a new Db.. you will need to seed it again.
+
+                ColorationHandler colorHandler = new ColorationHandler(context);
+
+                colorHandler.CreateColoration(coloration1, out error);
+                colorHandler.CreateColoration(coloration2, out error);
+                colorHandler.CreateColoration(coloration3, out error);
+
+
+                context.SaveChanges();
+
+                // Assert
+                List<Coloration> list2 = colorHandler.ColorationList();
+
+                Assert.NotNull(list2);
+                Assert.Collection(list2,
+                item => Assert.Equal(1, item.ColorationId),
+                item => Assert.Equal(2, item.ColorationId),
+                item => Assert.Equal(3, item.ColorationId)
+                );
+
+                Assert.Collection(list2,
+                item => Assert.Equal("White", item.Color1),
+                item => Assert.Equal("Red", item.Color1),
+                item => Assert.Equal("Orange", item.Color1)
+                );
+
+                Assert.Collection(list2,
+                item => Assert.Equal("Blue", item.Color2),
+                item => Assert.Equal("Yellow", item.Color2),
+                item => Assert.Equal("Black", item.Color2)
+                );
+            }
+        }
+
+
+    //     // ========================== Pet Test ========================== //
+
+    //     [Fact]
+    //     public void AddingAPetToTheApplication()
+    //     {
+
+    //         // Arrange
+    //         string error;
+
+    //         // Create a forum dummy
+    //         Customer customer = new Customer()
+    //         {
+    //             FirstName = "guest",
+    //             LastName = "guest",
+    //             UserName = "guest",
+    //             Password = "guest",
+    //             Email = "guest"
+                
+    // };
+
+    //         RegisterPetRequest registerPet = new RegisterPetRequest() {
+
+    //              OwnerId = 0,
+    //              AggressionCode = 0,
+    //              Category = 1,
+    //              Gender = 1,
+    //              Age = 23,
+    //              PetName = "Michu"
+
+    //         };
+
+    //         // Act
+    //         using (var context = new PetTrackerDBContext(options))
+    //         {
+
+    //             //verify that the db was deleted and created anew
+    //             context.Database.EnsureDeleted();//delete any Db from a previous test
+
+    //             context.Database.EnsureCreated();// create a new Db.. you will need to seed it again.
+
+    //             GetMyLocation ip = new GetMyLocation(context);
+    //             string myIP = ip.GetMyCoordinate("66.44.7.214");
+
+    //             string[] address = myIP.Split(",");
+    //             double latitude = Convert.ToDouble(address[0]);
+    //             double longitude = Convert.ToDouble(address[1]);
+
+    //             customer.HomeLocationLatitude = latitude;
+    //             customer.HomeLocationLongitude = longitude;
+
+    //             context.Customers.Add(customer);
+
+    //             context.SaveChanges();
+
+    //             LoggedinCustomer log = new LoggedinCustomer();
+
+
+    //             PetHandler petTest = new PetHandler(context);
+
+    //             petTest.CreatePet(registerPet, out error);
+
+    //             context.SaveChanges();
+
+
+    //             // Assert
+    //             Pet pet = context.Pets.Where(x => x.Name == "Michu").FirstOrDefault();
+
+    //             Assert.NotNull(pet);
+    //             /*Assert.Equal("Michu", pet.Name);
+    //             Assert.Equal(1, pet.Gender);
+    //             Assert.Equal(0, pet.PetId);
+    //             Assert.Equal(0, pet.OwnerId);*/
+    //         } 
+
+    //     }
+
+
+
 
 
     }
