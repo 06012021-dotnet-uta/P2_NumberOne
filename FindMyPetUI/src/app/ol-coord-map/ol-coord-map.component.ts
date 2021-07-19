@@ -1,4 +1,4 @@
-import {Component, Output, OnInit, Input } from '@angular/core';
+import {Component, Output, OnInit, Input, EventEmitter } from '@angular/core';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import OSM from 'ol/source/OSM';
@@ -8,41 +8,51 @@ import {defaults as defaultControls, MousePosition} from 'ol/control';
 import { createStringXY } from 'ol/coordinate';
 import Feature from 'ol/Feature';
 import Circle from 'ol/geom/Circle';
+import Point from 'ol/geom/Point';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import Style from 'ol/style/Style';
-
-/*
-
-Still a work in progress here
-
-*/
 
 @Component({
   selector: 'app-ol-coord-map',
   templateUrl: './ol-coord-map.component.html',
   styleUrls: ['./ol-coord-map.component.css']
 })
+
 export class OlCoordMapComponent implements OnInit {
 
   constructor() { }
 
-  @Input() interactable: boolean = true;
+  @Input() interactableCircle: boolean = false;     //Allows user input to set a circle with {{circleRadius}} as radius
+  @Input() interactablePoint: boolean = false;      //Allows user input to set a point on mouseclick
+  @Input() showPoints: boolean = false;             //Show points flag
+  @Input() showCircle: boolean = false;             //Show circle flag
+  @Input() points: number[][] = [];                 //2d array of lat and long coordinates - I may have lat and long order backwards but whatever peeps are gonna have to deal
+  @Input() circleCenter: number[] = [];             //Circle center
+  @Input() circleRadius: number = 1000;             //Circle radius
+  @Input() viewZoom: number = 4;                    //Sets the initial zoom
+  @Input() viewCenter: number[] = [-100, 40];       //Sets the initial view of the map
+
+  @Output() selectedCoordsEmitter = new EventEmitter<number[]>(); //Emits coordinates of mouse on map on mouseClick - Must have one of the interactable flags set to true
+
   map: Map | null = null;
-  radius: number = 10;
-  @Output() selectedCoords: number[] = [];
 
-  circleFeature = new Feature({
-    geometry: new Circle([12127398.797692968, 4063894.123105166], 50),
-  });
 
-  mousePositionControl = new MousePosition({
-    coordinateFormat: createStringXY(4),
-    projection: 'EPSG:4326'
-  })
+  //This is gross don't look at it
+  ngOnInit(){
 
-  ngOnInit(){    
-    this.circleFeature.setStyle(
+    let coord = olProj.transform(this.circleCenter, "EPSG:4326", "EPSG:3857"); //This is stupid and I feel stupid
+    
+    let mousePositionControl = new MousePosition({
+      coordinateFormat: createStringXY(4),
+      projection: 'EPSG:4326'
+    });
+
+    let circleFeature = new Feature({
+      geometry: new Circle(coord, this.circleRadius)
+    });
+
+    circleFeature.setStyle(
       new Style({
         renderer(coordinates: any, state) {
           const [[x, y], [x1, y1]] = coordinates;
@@ -77,8 +87,34 @@ export class OlCoordMapComponent implements OnInit {
       })
     );
 
+    let pointFeature = new Feature({
+    });
+
+    
+
+    let controls = defaultControls();
+
+    if(this.interactableCircle || this.interactablePoint) controls = controls.extend([mousePositionControl]);
+
+    let features = [];
+
+    if(this.showCircle)
+      features.push(circleFeature);
+    if(this.showPoints)
+    {
+      features.push(pointFeature);
+      for(let i = 0; i < this.points.length; i++)
+      {
+        if(this.points[i][0] !== 0 && this.points[i][1] !== 0){
+          features.push(new Feature({
+            geometry: new Point(olProj.transform(this.points[i], "EPSG:4326", "EPSG:3857"))
+          }));
+        }
+      }
+    }
+    
     this.map = new Map({
-      controls: defaultControls().extend([this.mousePositionControl]),
+      controls: controls,
       target: 'local_map',
       layers: [
         new TileLayer({
@@ -86,24 +122,35 @@ export class OlCoordMapComponent implements OnInit {
         }),
         new VectorLayer({
           source: new VectorSource({
-            features: [this.circleFeature]
+            features: features
           })
         })
       ],
       view: new View({
-        center: olProj.fromLonLat([-100, 40]),
-        zoom: 4
+        center: olProj.fromLonLat(this.viewCenter), // center on USA
+        zoom: this.viewZoom
       })
     });
 
-    this.map.on('click', (e) => {
-      let coord = olProj.transform(e.coordinate, "EPSG:3857", "EPSG:4326");
+    if(this.interactableCircle || this.interactablePoint){
+      this.map.on('click', (e) => {
+        let coord = olProj.transform(e.coordinate, "EPSG:3857", "EPSG:4326");
 
-      let newGeometry = new Circle(e.coordinate, 1000);
+        let newGeometry: Circle | Point | undefined = undefined;
+        
+        if(this.interactableCircle){
+          newGeometry = new Circle(e.coordinate, this.circleRadius);
+          circleFeature.setGeometry(newGeometry);
+        }
+        if(this.interactablePoint){
+          newGeometry = new Point(e.coordinate);
+          pointFeature.setGeometry(newGeometry);
+        }
 
-      this.circleFeature.setGeometry(newGeometry)
-      console.log(coord);
-    });
+        this.selectedCoordsEmitter.emit(coord);
+      });
+    }
   }
+  //I'm so ashamed
 
 }

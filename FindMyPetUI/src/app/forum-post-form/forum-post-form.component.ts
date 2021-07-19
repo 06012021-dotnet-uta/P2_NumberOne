@@ -1,7 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Globals } from '../globals';
 import { CreatePostRequest, Post, PostService } from '../post.service';
 
 @Component({
@@ -11,28 +10,39 @@ import { CreatePostRequest, Post, PostService } from '../post.service';
 })
 export class ForumPostFormComponent implements OnInit {
 
-  constructor(private postService: PostService, private router: Router) { 
+  constructor(private postService: PostService, private router: Router, private global: Globals) { 
   }
 
   postModel: PostModel = {};
 
-  post: Post | undefined = undefined;
+  //post: Post | undefined = undefined;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit()
   {
     let newPostForumId: string = this.router.url.split('/')[2];
     let post: CreatePostRequest = {
-      posterId: 0,
+      posterId: 0, //posterId: global.currentLoggedInCustomer,
       forumId: parseInt(newPostForumId),
       locationLatitude: this.postModel.locationLatitude!,
       locationLongitude: this.postModel.locationLongitude!,
       textBody: this.postModel.textBody!
     }
-    console.log(post);
-    this.postService.CreatePost(newPostForumId, post).subscribe( x => this.post = x);
+
+    this.postService.CreatePost(newPostForumId, post).subscribe( 
+      x => post = x, 
+      (error) => console.log(error),
+      () => this.router.navigate(['../forum', post.forumId, 'posts'])
+    );
+
+    
+  }
+
+  setCoords(selectedCoords: number[])
+  {
+    this.postModel.locationLatitude = selectedCoords[0];
+    this.postModel.locationLongitude = selectedCoords[1];
   }
 
   

@@ -1,4 +1,16 @@
-<div>
+<div class="container">
+    <div >
+        <h3>{{this.Forum.forumName}}</h3>
+        <app-ol-coord-map
+            [showCircle]="true"
+            [showPoints]="true"
+            [points]="getPostCoords()"
+            
+        ></app-ol-coord-map>
+        <br/>
+        <a routerLink="/forum/{{ForumId}}/posts/create"><button type="button" class="btn btn-success">Create Post</button></a>
+    </div>
+    <hr />
     <app-forum-posts-list-item
         *ngFor="let post of ListOfPosts"
         [post]="post"

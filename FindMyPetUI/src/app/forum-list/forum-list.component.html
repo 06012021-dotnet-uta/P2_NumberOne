@@ -5,7 +5,7 @@
     <div class="card-body">
         <h5 class="card-title">{{forumobj.forumName}}</h5>
         <p class="card-text">{{forumobj.descriptor}}</p>
-        <a href="#" class="btn btn-success">Post</a>
+        <a href="/forum/{{forumobj.forumId}}/posts" class="btn btn-success">Post</a>
         <button type="submit" class="btn btn-danger" (click)='deleteForum(forumobj.forumId)'>Delete</button>
     </div>
 </div>

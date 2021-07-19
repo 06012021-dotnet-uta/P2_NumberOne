@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Post } from '../post.service';
+import { Post, PostService } from '../post.service';
 import {Router} from '@angular/router'
 
 @Component({
@@ -9,7 +9,7 @@ import {Router} from '@angular/router'
 })
 export class ForumPostsListItemComponent implements OnInit {
   
-  constructor(private router: Router) {}
+  constructor(private router: Router, private postService: PostService) {}
 
   @Input() post!: Post;
 
@@ -17,5 +17,13 @@ export class ForumPostsListItemComponent implements OnInit {
 
   onSubmit()
   {
+    this.postService.DeletePost(this.post.postId).subscribe(
+      () => window.location.reload()
+    )
+  }
+
+  returnDate(): string
+  {
+    return new Date(this.post.postTime).toDateString();
   }
 }
