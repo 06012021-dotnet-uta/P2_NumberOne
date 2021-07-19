@@ -138,20 +138,32 @@ namespace FindMyPetApi.Controllers
             string error;
             var posts = _forumHandler.GetPosts(id, out error);
 
-            if (posts.Count > 0)
+            if (posts != null)
                 return StatusCode(200, posts);
             else
                 return StatusCode(400, error);
         }
 
         [HttpGet("{forumId}/Posts/{postId}")]
-        public IActionResult ListPosts(int forumId, int postId)
+        public IActionResult PostDetails(int forumId, int postId)
         {
             string error;
             var post = _forumHandler.GetPost(forumId, postId, out error);
 
             if (post != null)
                 return StatusCode(200, post);
+            else
+                return StatusCode(400, error);
+        }
+
+        [HttpDelete("{forumId}/Posts/{postId}/Delete")]
+        public IActionResult DeletePost(int forumId, int postId)
+        {
+            string error;
+            bool success = _forumHandler.DeletePost(postId, out error);
+
+            if (success)
+                return StatusCode(200);
             else
                 return StatusCode(400, error);
         }

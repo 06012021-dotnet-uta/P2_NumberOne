@@ -251,5 +251,25 @@ namespace utilities.forum
             return post;
         }
 
+        public bool DeletePost(int postId, out string error)
+        {
+            error = null;
+            try
+            {
+                Post p = _context.Posts.Find(postId);
+
+                _context.Posts.Remove(p);
+                _context.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                _logger.Log(LogLevel.Error, e.Message);
+                error = e.Message;
+            }
+
+            if (error == null) return true;
+            else return false;
+        }
+
     }
 }

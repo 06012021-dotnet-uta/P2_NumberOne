@@ -10,6 +10,7 @@
             [showPoints]="true"
         >
         </app-ol-coord-map>
+        <input type="file" #file class="file-upload" (change)="setFile(file.files)">
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

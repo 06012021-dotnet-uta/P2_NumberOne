@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Globals } from '../globals';
 import { CreatePostRequest, Post, PostService } from '../post.service';
+import { UploadService } from '../upload.service';
 
 @Component({
   selector: 'app-forum-post-form',
@@ -10,12 +11,12 @@ import { CreatePostRequest, Post, PostService } from '../post.service';
 })
 export class ForumPostFormComponent implements OnInit {
 
-  constructor(private postService: PostService, private router: Router, private global: Globals) { 
-  }
+  constructor(private postService: PostService, private uploadService: UploadService, private router: Router, private global: Globals) {}
 
   postModel: PostModel = {};
+  fileToUpload: FormData | null = null;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {};
 
   onSubmit()
   {
@@ -33,12 +34,22 @@ export class ForumPostFormComponent implements OnInit {
       (error) => console.log(error),
       () => this.router.navigate(['../forum', post.forumId, 'posts'])
     );
+
+    this.uploadService.uploadFile(this.fileToUpload!);
   }
 
   setCoords(selectedCoords: number[])
   {
     this.postModel.locationLatitude = selectedCoords[0];
     this.postModel.locationLongitude = selectedCoords[1];
+  }
+
+  setFile(e: any)
+  {
+    const formData: FormData = new FormData();
+    let image = e.target.files[0];
+    formData.append('Image', image, image.name);
+    this.fileToUpload = formData;
   }
 }
 

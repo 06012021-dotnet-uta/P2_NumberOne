@@ -18,5 +18,6 @@ namespace utilities.forum
         Post CreatePost(int id, CreatePostRequest createPostRequest, out string error);
         List<Post> GetPosts(int id, out string error);
         Post GetPost(int forumId, int postId, out string error);
+        bool DeletePost(int postId, out string error);
     }
 }
