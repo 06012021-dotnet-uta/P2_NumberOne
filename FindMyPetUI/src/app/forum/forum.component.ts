@@ -18,11 +18,21 @@ export class ForumComponent implements OnInit {
   ngOnInit(): void {
 
     this.forumservice.GetForumList().subscribe(
-
       ListofForum => this.ListofForum = ListofForum
-      
     );
 
+  }
+
+  filterForums(search : string)
+  {
+    if(search == "")
+      this.ngOnInit();
+    else
+    {
+      this.ListofForum = this.ListofForum.filter(x => {
+        return x.forumName.toLowerCase().match(search.toLowerCase());
+      })
+    }
   }
 
 }

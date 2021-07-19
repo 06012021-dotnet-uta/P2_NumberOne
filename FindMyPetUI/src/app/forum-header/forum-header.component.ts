@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgForm, NgModel } from '@angular/forms';
@@ -20,8 +20,9 @@ export class ForumHeaderComponent implements OnInit {
   ListofForum: Forum[];
 
   closeResult = '';
-  search: string = '';
-  
+  @Output() searchEmitter = new EventEmitter<string>();
+  searchString = '';
+
   
   ngOnInit(): void {
   }
@@ -37,14 +38,8 @@ export class ForumHeaderComponent implements OnInit {
     );
   }
 
-  searchList(){
-
-  }
-
-  
-
-  searchForum(forumName: string){
-    console.log();
+  searchForum(){
+    this.searchEmitter.emit(this.searchString);
    }
 
 
