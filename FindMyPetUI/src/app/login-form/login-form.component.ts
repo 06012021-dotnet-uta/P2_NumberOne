@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Customer } from '../customer/customer';
 import { LoginService, UserInfo } from '../login.service';
-import { FormControl, FormGroup } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login-form',
@@ -13,7 +10,7 @@ export class LoginFormComponent implements OnInit {
 
   constructor(private loginService: LoginService) 
   { 
-    this.model = new UserInfo('','');
+    this.model = new UserInfo();
   }
 
   ngOnInit(): void {

@@ -46,9 +46,6 @@ export class RegisterPetService {
   } 
 } 
 
-
-
-
 export interface RegisterPet {
   petid: number;
   ownerid: number;

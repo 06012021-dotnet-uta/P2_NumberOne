@@ -1,7 +1,6 @@
 import { Output } from '@angular/core';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { GenderService } from '../gender.service';
 import { RegisterPetService,   CategoryInteface , AggressionInteface, GenderInteface } from '../register-pet.service';
 
 @Component({
@@ -36,23 +35,16 @@ export class PetRegistrationComponent implements OnInit {
       );
   }
 
-
-
   ListofAggression: AggressionInteface[];
   ListofCategory: CategoryInteface[];
   ListofGender: GenderInteface[];
-  ngOnInit(): void {
-    //this.ListofBreeds = this.breedListService.GetBreedList();
-   
-    
-
-   
+  ngOnInit(): void 
+  {
     this.petservice.GetGenderList().subscribe
     (
       ListofGender => this.ListofGender = ListofGender
     )
-    
-    
+
     this.petservice.GetAggressionList().subscribe
     (
       ListofAggression => this.ListofAggression = ListofAggression
@@ -62,6 +54,5 @@ export class PetRegistrationComponent implements OnInit {
     (
       ListofCategory => this.ListofCategory = ListofCategory
     )
-
   }
 }
