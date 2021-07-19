@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { LoginComponent } from './login/login.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
-import { Observable, of, throwError } from 'rxjs';
 import { Globals } from './globals';
-import { NGXLogger } from "ngx-logger";
 import { Customer } from './customer/customer';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,43 +12,64 @@ import { Router } from '@angular/router';
 export class LoginService 
 {
 
-  constructor(private http: HttpClient, private global: Globals, private router: Router) { }
+  constructor(private http: HttpClient, private global: Globals, private router: Router, private auth: AuthService) { }
 
   httpHeader = 
   {
     headers: new HttpHeaders
     ({
-      'Content-Type': 'application/json',
-      'url' : ''
+      'Content-Type': 'application/json'
     })
   }
 
   private loginUrl = 'api/Customer/Login';
 
-  loginRequest(Info: UserInfo)
+  loginRequest(Info: UserInfo) 
   {
-    console.log("Data: ", Info);
-    this.http.post(this.global.currentHostURL()+this.loginUrl, Info, this.httpHeader)
-    .subscribe
-    (
-      (data) => 
-      {
-        console.log(data);
-        this.router.navigate(['']);
-        return data as Customer;
-      },
-      (error) => 
-      {
-        console.log(error)
-      }
-    );
+    if (localStorage.getItem("PetUserSessionToken") === null) 
+    {
+      console.log("Data: ", Info);
+      this.http.post(this.global.currentHostURL()+this.loginUrl, Info, this.httpHeader)
+      .subscribe
+      (
+        (data) => 
+        {
+          console.log(data);
+          this.auth.SetUserToken(data as Customer);
+          return data as Customer;
+        },
+        (error) => 
+        {
+          console.log(error)
+          return new Customer();
+        }
+      );
+    }
+    else
+    {
+      this.router.navigate(['']);
+    }
+  }
+  
+  logout(): boolean
+  {
+    if (localStorage.getItem("PetUserSessionToken") === null) 
+    {
+      return false;
+    }
+    else
+    {
+      localStorage.removeItem("PetUserSessionToken");
+      this.router.navigate(['']);
+      return true;
+    }
   }
 }
 
 export class UserInfo
 {
   constructor(
-    public username: string,
-    public password: string
+    public username: string = '',
+    public password: string = ''
   ) {}
 }

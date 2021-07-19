@@ -6,6 +6,9 @@ import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { Forum } from '../Forum';
 import { ForumserviceService } from '../forumservice.service';
+import { LoginService } from '../login.service';
+import { Customer } from '../customer/customer';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,10 +17,13 @@ import { ForumserviceService } from '../forumservice.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private breedListService: BreedListService, private forumservice: ForumserviceService) { 
+  constructor(private breedListService: BreedListService, private forumservice: ForumserviceService, private login: LoginService) { 
     this.ListofBreeds = [];
     this.ListofForum = [];
+    this.user = new Customer;
   }
+
+  user: Customer;
 
   ListofBreeds: Breed[];
   ListofForum: Forum[];
