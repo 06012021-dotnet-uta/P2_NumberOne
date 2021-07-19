@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from "@angular/router";
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Globals } from './globals';
 import { Customer } from './customer/customer';
 import { Observable, of} from 'rxjs';
@@ -12,7 +14,7 @@ import { Router } from '@angular/router';
 
 export class AuthService implements CanActivate{
 
-  constructor( private global: Globals, private router: Router) 
+  constructor( private global: Globals, private router: Router, private http: HttpClient) 
   {
     this.user = new Customer();
     this.sessionUser = new Customer();
@@ -40,29 +42,49 @@ export class AuthService implements CanActivate{
 
   ValidUserToken(): boolean
   {
-    if(this.GetCurrentUser() === null)
+    let httpHeader = 
+    {
+      headers: new HttpHeaders
+      ({
+        'Content-Type': 'application/json'
+      })
+    }
+
+    if(localStorage.getItem("PetUserSessionToken") === null || localStorage.getItem("PetUserSessionToken") == undefined)
     {
       return false;
     }
     else
     {
-      this.user = this.GetCurrentUser()!;
-      // this.loginInfo = {username: this.user.username, password: this.user.password};
-      // this.sessionUser = this.login.loginRequest(this.loginInfo)!;
-      // if(this.sessionUser == this.user)
-      // {
-      //   return true;
-      // }
-      // else
-      // {
-      //   return false;
-      // }
-      return true;
+      console.log(localStorage.getItem("PetUserSessionToken"));
+      //this.sessionUser = JSON.parse(localStorage.getItem("PetUserSessionToken")!);
+      let tokenUser = {
+        username: this.sessionUser.username,
+        password: this.sessionUser.password
+      }
+
+      this.http.post(this.global.currentHostURL()+'api/Customer/Login', tokenUser, httpHeader)
+      .subscribe
+      (
+        (data) => 
+        {
+          console.log(data);
+          this.SetUserToken(data as Customer);
+          return true;
+        },
+        (error) => 
+        {
+          console.log("No User Found.");
+          return false;
+        }
+      )
     }
+    return false;
   }
 
   SetUserToken(user: Customer)
   {
+    console.log(localStorage.getItem("PetUserSessionToken"));
     localStorage.setItem("PetUserSessionToken", JSON.stringify(user));
     this.router.navigate(['dashboard']);
   }
@@ -71,7 +93,8 @@ export class AuthService implements CanActivate{
   {
     if(this.ValidUserToken())
     {
-      return JSON.parse(localStorage.getItem("PetUserSessionToken")!);
+      console.log(localStorage.getItem("PetUserSessionToken"));
+      //return JSON.parse(localStorage.getItem("PetUserSessionToken")!);
     }
     return null;
   }
