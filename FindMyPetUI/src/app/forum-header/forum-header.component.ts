@@ -1,12 +1,9 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 import { ForumserviceService } from '../forumservice.service';
 import { Forum } from '../Forum';
-import { ThisReceiver } from '@angular/compiler';
-
-
 
 @Component({
   selector: 'app-forum-header',
@@ -15,7 +12,6 @@ import { ThisReceiver } from '@angular/compiler';
   providers:[NgbModalConfig, NgbModal]
 })
 export class ForumHeaderComponent implements OnInit {
-
   
   constructor(private modalService: NgbModal, private forumservice: ForumserviceService) { 
     this.ListofForum = [];
@@ -24,6 +20,8 @@ export class ForumHeaderComponent implements OnInit {
   ListofForum: Forum[];
 
   closeResult = '';
+  search: string = '';
+  
   
   ngOnInit(): void {
   }
@@ -37,6 +35,10 @@ export class ForumHeaderComponent implements OnInit {
       },
        (err) => {console.log(err);}
     );
+  }
+
+  searchList(){
+
   }
 
   

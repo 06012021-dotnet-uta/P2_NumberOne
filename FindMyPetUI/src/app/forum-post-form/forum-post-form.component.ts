@@ -15,15 +15,13 @@ export class ForumPostFormComponent implements OnInit {
 
   postModel: PostModel = {};
 
-  //post: Post | undefined = undefined;
-
   ngOnInit(): void {}
 
   onSubmit()
   {
     let newPostForumId: string = this.router.url.split('/')[2];
     let post: CreatePostRequest = {
-      posterId: 0, //posterId: global.currentLoggedInCustomer,
+      posterId: 1, //posterId: global.currentLoggedInCustomer,
       forumId: parseInt(newPostForumId),
       locationLatitude: this.postModel.locationLatitude!,
       locationLongitude: this.postModel.locationLongitude!,
@@ -35,8 +33,6 @@ export class ForumPostFormComponent implements OnInit {
       (error) => console.log(error),
       () => this.router.navigate(['../forum', post.forumId, 'posts'])
     );
-
-    
   }
 
   setCoords(selectedCoords: number[])
@@ -44,8 +40,6 @@ export class ForumPostFormComponent implements OnInit {
     this.postModel.locationLatitude = selectedCoords[0];
     this.postModel.locationLongitude = selectedCoords[1];
   }
-
-  
 }
 
 interface PostModel
