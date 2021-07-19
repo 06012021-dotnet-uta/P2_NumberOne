@@ -1,7 +1,6 @@
 import { Output } from '@angular/core';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { GenderService } from '../gender.service';
 import { RegisterPetService,   CategoryInteface , AggressionInteface, GenderInteface } from '../register-pet.service';
 
 @Component({
@@ -22,10 +21,13 @@ export class PetRegistrationComponent implements OnInit {
 //Creating a method Register and the [--> registerform <--]contains all of the data comes from the form og type 
 //NgForm imported  import [ --{ NgForm } from '@angular/forms'--]
   register(registerpetform: NgForm){
-      this.petservice.addPet(registerpetform.value).subscribe(
+    //console.log(registerpetform.value);
+      this.petservice.addPet(registerpetform.value)
+      .subscribe
+      (
         (resp) => {
-           console.log(resp);//this line to give the respons in the console 
-           registerpetform.reset();
+          console.log(resp);//this line to give the respons in the console 
+          registerpetform.reset();
         },      
         (err)=>{
           console.log(err);//this line to give the respons in the console if anything wrong happend 
@@ -33,23 +35,16 @@ export class PetRegistrationComponent implements OnInit {
       );
   }
 
-
-
   ListofAggression: AggressionInteface[];
   ListofCategory: CategoryInteface[];
   ListofGender: GenderInteface[];
-  ngOnInit(): void {
-    //this.ListofBreeds = this.breedListService.GetBreedList();
-   
-    
-
-   
+  ngOnInit(): void 
+  {
     this.petservice.GetGenderList().subscribe
     (
       ListofGender => this.ListofGender = ListofGender
     )
-    
-    
+
     this.petservice.GetAggressionList().subscribe
     (
       ListofAggression => this.ListofAggression = ListofAggression
@@ -59,6 +54,5 @@ export class PetRegistrationComponent implements OnInit {
     (
       ListofCategory => this.ListofCategory = ListofCategory
     )
-
   }
 }

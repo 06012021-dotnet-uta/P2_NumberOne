@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { CategoryInteface, CategoryService } from '../category.service';
+import { CategoryInteface, RegisterPetService,  } from '../register-pet.service';
 
 @Component({
   selector: 'app-category',
@@ -10,7 +10,7 @@ import { CategoryInteface, CategoryService } from '../category.service';
   styleUrls: ['./category.component.css']
 })export class CategoryComponent implements OnInit {
 
-  constructor(private CategoryListService: CategoryService) { 
+  constructor(private CategoryListService: RegisterPetService) { 
     this.ListofCategory = [];
 
   }

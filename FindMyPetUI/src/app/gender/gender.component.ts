@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import {  GenderInteface, GenderService } from '../gender.service';
+import { RegisterPetService, GenderInteface } from '../register-pet.service';
 
 
 @Component({
@@ -12,14 +12,7 @@ import {  GenderInteface, GenderService } from '../gender.service';
 })
 export class GenderComponent implements OnInit {
 
-
-  
-      
-  
-
-
-
-  constructor(private GenderListService: GenderService) { 
+  constructor(private GenderListService: RegisterPetService) { 
     this.ListofGender = [];
 
   }
@@ -35,12 +28,8 @@ export class GenderComponent implements OnInit {
 
   }
 
-
-
-
   onSubmit()
   {
   
   }   
-
 }

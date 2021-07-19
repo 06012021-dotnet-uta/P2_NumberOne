@@ -46,9 +46,6 @@ export class RegisterPetService {
   } 
 } 
 
-
-
-
 export interface RegisterPet {
   petid: number;
   ownerid: number;
@@ -57,8 +54,6 @@ export interface RegisterPet {
   category: number;
   gender: number;
   age: number;
-
-  
 }
 
 export interface GenderInteface {
