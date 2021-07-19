@@ -1,4 +1,4 @@
-import { Pipe, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Globals } from './globals';
 import { Customer } from './customer/customer';
@@ -50,6 +50,7 @@ export class LoginService
       this.router.navigate(['']);
     }
   }
+  
   logout(): boolean
   {
     if (localStorage.getItem("PetUserSessionToken") === null) 
