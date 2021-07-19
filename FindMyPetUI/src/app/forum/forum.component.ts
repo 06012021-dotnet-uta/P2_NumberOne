@@ -14,6 +14,7 @@ export class ForumComponent implements OnInit {
   }
 
   ListofForum: Forum[];
+   pass: string | undefined
 
   ngOnInit(): void {
 
@@ -25,4 +26,8 @@ export class ForumComponent implements OnInit {
 
   }
 
+  passName(forum: string){
+      this.pass = forum;
+      console.log(this.pass)
+  }
 }

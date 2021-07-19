@@ -5,6 +5,8 @@ import { NgForm } from '@angular/forms';
 import { ForumserviceService } from '../forumservice.service';
 import { Forum } from '../Forum';
 import { ThisReceiver } from '@angular/compiler';
+import { ForumComponent } from '../forum/forum.component';
+import { EventEmitter } from '@angular/core';
 
 
 
@@ -14,16 +16,23 @@ import { ThisReceiver } from '@angular/compiler';
   styleUrls: ['./forum-header.component.css'],
   providers:[NgbModalConfig, NgbModal]
 })
+
+
+
 export class ForumHeaderComponent implements OnInit {
 
-  
+ 
+
   constructor(private modalService: NgbModal, private forumservice: ForumserviceService) { 
     this.ListofForum = [];
   }
 
+  @Output() forumNameEmitter = new EventEmitter<string>();
+  
+  forumName: any;
   ListofForum: Forum[];
-
   closeResult = '';
+  
   
   ngOnInit(): void {
   }
@@ -31,23 +40,14 @@ export class ForumHeaderComponent implements OnInit {
   // Events go here
   addForum(forumdata: NgForm): void{
     this.forumservice.AddForum(forumdata.value).subscribe(
-      
-      (resp) => {console.log(resp);
-        forumdata.reset();
-      },
-       (err) => {console.log(err);}
+      () => window.location.reload()    
     );
   }
 
 
   searchForum(forumName: string){
-    this.forumservice.SearchForum(forumName).subscribe(
-      
-    //   (resp) => {console.log(resp);
-    //     forumName.reset();
-    //   },
-    //    (err) => {console.log(err);}
-     );
+    this.forumNameEmitter.emit(forumName)
+         
    }
 
 

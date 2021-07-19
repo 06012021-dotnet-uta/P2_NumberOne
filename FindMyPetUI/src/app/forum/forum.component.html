@@ -1,11 +1,12 @@
 <div class="container">
+
     <div>
-        <app-forum-header></app-forum-header>
+        <app-forum-header #data (forumNameEmitter)="passName($event)"></app-forum-header>
+    </div>
+
+    <div>
+        <app-forum-list [data]="data" [forumobj]='forum' *ngFor="let forum of ListofForum "></app-forum-list>
     </div>
 
 
-    <app-forum-list [forumobj]='forum' *ngFor="let forum of ListofForum"></app-forum-list>
-
-
-    <!-- <app-forum-list *ngFor="let forum of forums" [forumobj]='forum'></app-forum-list> -->
 </div>
