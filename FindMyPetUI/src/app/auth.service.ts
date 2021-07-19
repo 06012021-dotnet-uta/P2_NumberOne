@@ -89,6 +89,6 @@ export class AuthService implements CanActivate{
     let user = JSON.parse("Token:" + localStorage.getItem("PetUserSessionToken")!);
     let url = this.global.currentHostURL()+'api/Customer/Details/'+user.customerId;
     console.log(url);
-    return this.http.get<Customer>(url);
+    return user;
   } 
 }

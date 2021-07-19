@@ -4,9 +4,9 @@ export class Customer
   constructor(
     public username: string = '',
     public password: string = '',
-    public id: number = 0,
-    public firstName: string = '',
-    public lastName: string = '',
+    public customerId: number = 0,
+    public firstName: string = 'Test',
+    public lastName: string = 'User',
     public email: string = '',
     public homeLongitude: number = 0,
     public homeLatitude: number = 0,

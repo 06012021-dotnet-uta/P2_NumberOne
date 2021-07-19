@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Post, PostService } from '../post.service';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
+import { AuthService } from '../auth.service';
+import { Customer } from '../customer/customer';
 
 @Component({
   selector: 'app-forum-posts-list-item',
@@ -9,7 +11,7 @@ import {Router} from '@angular/router'
 })
 export class ForumPostsListItemComponent implements OnInit {
   
-  constructor(private router: Router, private postService: PostService) {}
+  constructor(private router: Router, private postService: PostService, private auth: AuthService) {}
 
   @Input() post!: Post;
 
@@ -25,5 +27,11 @@ export class ForumPostsListItemComponent implements OnInit {
   returnDate(): string
   {
     return new Date(this.post.postTime).toDateString();
+  }
+
+  GetUserID()
+  {
+    let user = this.auth.GetCurrentUser();
+    return user!.customerId;
   }
 }
