@@ -4,6 +4,7 @@ import { ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgForm, NgModel } from '@angular/forms';
 import { ForumserviceService } from '../forumservice.service';
 import { Forum } from '../Forum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forum-header',
@@ -13,7 +14,7 @@ import { Forum } from '../Forum';
 })
 export class ForumHeaderComponent implements OnInit {
   
-  constructor(private modalService: NgbModal, private forumservice: ForumserviceService) { 
+  constructor(private modalService: NgbModal, private forumservice: ForumserviceService, private router: Router) { 
     this.ListofForum = [];
   }
 
@@ -33,6 +34,7 @@ export class ForumHeaderComponent implements OnInit {
       
       (resp) => {console.log(resp);
         forumdata.reset();
+        this.router.navigate(['forum'])
       },
        (err) => {console.log(err);}
     );

@@ -25,6 +25,7 @@
     "bootstrap": "^5.0.2",
     "jquery": "^3.6.0",
     "ngx-logger": "^4.3.3",
+    "popper.js": "^1.16.1",
     "proj4": "^2.7.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",

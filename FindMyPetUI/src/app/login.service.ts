@@ -26,29 +26,23 @@ export class LoginService
 
   loginRequest(Info: UserInfo) 
   {
-    if (localStorage.getItem("PetUserSessionToken") === null) 
-    {
-      console.log("Data: ", Info);
-      this.http.post(this.global.currentHostURL()+this.loginUrl, Info, this.httpHeader)
-      .subscribe
-      (
-        (data) => 
-        {
-          console.log(data);
-          this.auth.SetUserToken(data as Customer);
-          return data as Customer;
-        },
-        (error) => 
-        {
-          console.log(error)
-          return new Customer();
-        }
-      );
-    }
-    else
-    {
-      this.router.navigate(['']);
-    }
+    console.log("Data: ", Info);
+    this.http.post(this.global.currentHostURL()+this.loginUrl, Info, this.httpHeader)
+    .subscribe
+    (
+      (data) => 
+      {
+        console.log(data);
+        this.auth.SetUserToken(data as Customer);
+        this.router.navigate(['']);
+        return data as Customer;
+      },
+      (error) => 
+      {
+        console.log(error)
+        return false;
+      }
+    );  
   }
   
   logout(): boolean

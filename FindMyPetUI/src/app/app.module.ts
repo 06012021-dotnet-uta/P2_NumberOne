@@ -24,6 +24,7 @@ import { ForumPostsListComponent } from './forum-posts-list/forum-posts-list.com
 import { ForumPostsListItemComponent } from './forum-posts-list-item/forum-posts-list-item.component';
 import { ForumPostFormComponent } from './forum-post-form/forum-post-form.component';
 import { OlCoordMapComponent } from './ol-coord-map/ol-coord-map.component';
+import { PetNavbarComponent } from './pet-navbar/pet-navbar.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { OlCoordMapComponent } from './ol-coord-map/ol-coord-map.component';
     ForumPostsListComponent,
     ForumPostsListItemComponent,
     ForumPostFormComponent,
-    OlCoordMapComponent
+    OlCoordMapComponent,
+    PetNavbarComponent
   ],
   imports: [
     BrowserModule,
