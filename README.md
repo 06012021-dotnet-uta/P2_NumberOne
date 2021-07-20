@@ -2,14 +2,22 @@
 
 ## Project Description
 
+Importan Information:
 This repository will contain all of our Project 2 materials and information.
 Project Proposal Link: https://docs.google.com/document/d/1YpeQg3WW48GvBur6BTvXUt7L1Z0cAGjZiWOVVa2rHfs/edit?usp=sharing
 
 ## Technologies Used
 
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* ASP.NET
+* C#
+* AzureDevOps
+* Angular
+* EF Core
+* xUnit Test
+* Azure Database
+* OpenLayers
+* IpStack
+* GitHub
 
 ## Features
 
