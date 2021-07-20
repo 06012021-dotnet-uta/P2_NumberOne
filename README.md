@@ -49,7 +49,7 @@ To-do list:
 
 > Tyler Mire
 > Qais Qaisi
-> Elizabeth 
+> Elizabeth Nguyen
 
 ## License
 
