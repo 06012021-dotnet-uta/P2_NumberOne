@@ -22,13 +22,13 @@ Project Proposal Link: https://docs.google.com/document/d/1YpeQg3WW48GvBur6BTvXU
 ## Features
 
 List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+* Login functionality
+* See forums and post on forums
+* Mapping features using Open Layers and IpStacks
 
 To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+* Overlaying several Maps
+* Combinig forums
 
 ## Getting Started
    
