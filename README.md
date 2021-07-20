@@ -47,9 +47,10 @@ To-do list:
 
 ## Contributors
 
-> Tyler Mire
-> Qais Qaisi
-> Elizabeth Nguyen
+> Tyler Mire,
+> Qais Qaisi,
+> Elizabeth Nguyen,
+> Guillermo Delgado
 
 ## License
 
