@@ -1,11 +1,9 @@
 import { Injectable } from "@angular/core";
-import { NGXLogger } from "ngx-logger";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 
 @Injectable({providedIn: 'root'})
+
 export class Globals 
 {
 

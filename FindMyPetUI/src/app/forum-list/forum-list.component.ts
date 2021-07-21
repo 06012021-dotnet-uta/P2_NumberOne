@@ -10,11 +10,10 @@ import { ForumserviceService } from '../forumservice.service';
 })
 export class ForumListComponent implements OnInit {
 
-  @Input()forumobj!: Forum;
+  @Input() forumobj!: Forum;
+  @Input() searchString: string = '';
 
-  constructor(private forumservice: ForumserviceService) { 
-       
-  }
+  constructor(private forumservice: ForumserviceService) {}
 
   ngOnInit(): void {
   }

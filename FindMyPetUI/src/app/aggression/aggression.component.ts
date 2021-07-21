@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import {  GenderInteface, GenderService } from '../gender.service';
-import { AggressionInteface, AggressionService } from '../aggression.service';
+import { AggressionInteface, RegisterPetService } from '../register-pet.service';
 
 
 @Component({
@@ -13,7 +9,7 @@ import { AggressionInteface, AggressionService } from '../aggression.service';
 })
 export class AggressionComponent implements OnInit {
 
-  constructor(private AggressionListService: AggressionService) { 
+  constructor(private AggressionListService: RegisterPetService) { 
     this.ListofAggression = [];
 
   }

@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container-fluid ">
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <ul class="navbar-nav flex-grow-1" >
+            <li class="nav-item">
+                <a class="nav-link text-dark" routerLink="/dashboard"><h1>{{title}}</h1></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" routerLink="/forum" > All Forums</a>
+            </li>
+            <div *ngIf="IsLoggedIn();">
+                <li>
+                    <a class="nav-link text-dark" routerLink="/pet-registration">Register a Pet</a>
+                </li> 
+            </div>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>User &nbsp;</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <div *ngIf="IsLoggedIn();else other_content">
+                    <button routerLink="/dashboard" ngbDropdownItem>Profile</button>
+                    <button routerLink="/pet-registration" ngbDropdownItem>Register a Pet</button>
+                    <button routerLink="/login" type="button" class="btn btn-danger" (click)="Logout()" >Log Out</button>
+                </div>
+                <ng-template #other_content>
+                    <button routerLink="/login" ngbDropdownItem>Login</button>
+                    <button routerLink="/sign-up" ngbDropdownItem>Sign-Up</button>
+                </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <router-outlet></router-outlet>

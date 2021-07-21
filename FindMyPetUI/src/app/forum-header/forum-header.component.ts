@@ -1,12 +1,10 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 import { ForumserviceService } from '../forumservice.service';
 import { Forum } from '../Forum';
-import { ThisReceiver } from '@angular/compiler';
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forum-header',
@@ -15,15 +13,17 @@ import { ThisReceiver } from '@angular/compiler';
   providers:[NgbModalConfig, NgbModal]
 })
 export class ForumHeaderComponent implements OnInit {
-
   
-  constructor(private modalService: NgbModal, private forumservice: ForumserviceService) { 
+  constructor(private modalService: NgbModal, private forumservice: ForumserviceService, private router: Router) { 
     this.ListofForum = [];
   }
 
   ListofForum: Forum[];
 
   closeResult = '';
+  @Output() searchEmitter = new EventEmitter<string>();
+  searchString = '';
+
   
   ngOnInit(): void {
   }
@@ -34,15 +34,14 @@ export class ForumHeaderComponent implements OnInit {
       
       (resp) => {console.log(resp);
         forumdata.reset();
+        this.router.navigate(['forum'])
       },
        (err) => {console.log(err);}
     );
   }
 
-  
-
-  searchForum(forumName: string){
-    console.log();
+  searchForum(){
+    this.searchEmitter.emit(this.searchString);
    }
 
 

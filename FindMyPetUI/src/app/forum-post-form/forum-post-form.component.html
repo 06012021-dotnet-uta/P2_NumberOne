@@ -1,8 +1,19 @@
-<h4>Post Form</h4>
-<form (ngSubmit)="onSubmit()">
-    Post text body: <input type="text" class="form-control" id="textBody" [(ngModel)]="postModel.textBody" name="textBody">
-    <!--OpenLayers map input goes here-->
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
 
-<app-ol-coord-map></app-ol-coord-map>
+<div class="container">
+    <h4>Create new post</h4>
+    <form (ngSubmit)="onSubmit()">
+        <textarea rows=7 class="form-control" id="textBody" [(ngModel)]="postModel.textBody" name="textBody" placeholder="What do you want to say?"></textarea>
+        <br />
+        <app-ol-coord-map 
+            (selectedCoordsEmitter)="setCoords($event)" 
+            [interactablePoint]="true"
+            [showPoints]="true"
+        >
+        </app-ol-coord-map>
+        <input type="file" #file class="file-upload" (change)="setFile(file.files)">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <!--Populate with correct info once global.currentLoggedInCustomer is working-->
+    
+</div>

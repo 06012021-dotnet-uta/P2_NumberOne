@@ -1,11 +1,15 @@
 <div class="card">
-    <div class="card-header">
-        {{forumobj.isClaimed}}
+    <div class="card-header" style="display: inline-flex" >
+        <div><h4>{{forumobj.forumName}} &nbsp;</h4></div>
+        <div *ngIf="forumobj.isClaimed;else other_content"> 
+            <div><h6><span class="form-text text-muted">Claimed</span></h6></div>
+        </div>
+        <ng-template #other_content><h6><span class="form-text text-muted">Unclaimed</span></h6></ng-template>
     </div>
     <div class="card-body">
-        <h5 class="card-title">{{forumobj.forumName}}</h5>
         <p class="card-text">{{forumobj.descriptor}}</p>
-        <a href="#" class="btn btn-success">Post</a>
+        <a href="/forum/{{forumobj.forumId}}/posts" class="btn btn-success">View</a>
         <button type="submit" class="btn btn-danger" (click)='deleteForum(forumobj.forumId)'>Delete</button>
     </div>
 </div>
+<br>

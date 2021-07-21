@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AggressionService } from './aggression.service';
+import { UploadService } from './upload.service';
 
-describe('AggressionService', () => {
-  let service: AggressionService;
+describe('UploadService', () => {
+  let service: UploadService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AggressionService);
+    service = TestBed.inject(UploadService);
   });
 
   it('should be created', () => {

@@ -13,7 +13,7 @@ export class LoginFormComponent implements OnInit {
 
   constructor(private loginService: LoginService) 
   { 
-    this.model = new UserInfo('','');
+    this.model = new UserInfo();
   }
 
   ngOnInit(): void {

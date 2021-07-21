@@ -1,11 +1,6 @@
 <div class="container">
     <div>
-        <app-forum-header></app-forum-header>
+        <app-forum-header (searchEmitter)="filterForums($event)"></app-forum-header>
     </div>
-
-
     <app-forum-list [forumobj]='forum' *ngFor="let forum of ListofForum"></app-forum-list>
-
-
-    <!-- <app-forum-list *ngFor="let forum of forums" [forumobj]='forum'></app-forum-list> -->
 </div>

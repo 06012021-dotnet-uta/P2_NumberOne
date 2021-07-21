@@ -16,6 +16,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using utilities.forum;
 using System.Web.Http.Cors;
+using utilities.Upload;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace FindMyPetApi
 {
@@ -54,6 +56,13 @@ namespace FindMyPetApi
             services.AddScoped<IColorationHandler, ColorationHandler>();
             services.AddScoped<IPetHandler, PetHandler>();
             services.AddScoped<IForumHandler, ForumHandler>();
+            services.AddScoped<IUploadHandler, UploadHandler>();
+
+            services.Configure<FormOptions>(o => {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
 
             //Setting up CORS Pipe
             services.AddCors((options) =>

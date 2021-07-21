@@ -23,6 +23,12 @@ export class PostService {
   CreatePost(forumId: string, post: CreatePostRequest): Observable<Post>{
     return this.http.post<Post>(this.global.currentHostURL() + this.ForumUrl + forumId + this.PostCreateUrl, post);
   }
+
+  DeletePost(postId: number): Observable<boolean>
+  {
+    console.log(this.global.currentHostURL() + this.ForumUrl + "1" + "/posts/" + postId + "/delete");
+    return this.http.delete<boolean>(this.global.currentHostURL() + this.ForumUrl + "1" + "/posts/" + postId + "/delete");
+  }
 }
 
 export interface CreatePostRequest
