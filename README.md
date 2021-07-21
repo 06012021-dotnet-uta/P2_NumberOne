@@ -2,25 +2,33 @@
 
 ## Project Description
 
+Importan Information:
 This repository will contain all of our Project 2 materials and information.
 Project Proposal Link: https://docs.google.com/document/d/1YpeQg3WW48GvBur6BTvXUt7L1Z0cAGjZiWOVVa2rHfs/edit?usp=sharing
 
 ## Technologies Used
 
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* ASP.NET
+* C#
+* AzureDevOps
+* Angular
+* EF Core
+* xUnit Test
+* Azure Database
+* OpenLayers
+* IpStack
+* GitHub
 
 ## Features
 
 List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+* Login functionality
+* See forums and post on forums
+* Mapping features using Open Layers and IpStacks
 
 To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+* Overlaying several Maps
+* Combinig forums
 
 ## Getting Started
    
@@ -39,7 +47,10 @@ To-do list:
 
 ## Contributors
 
-> Here list the people who have contributed to this project. (ignore this section, if its a solo project)
+> Tyler Mire,
+> Qais Qaisi,
+> Elizabeth Nguyen,
+> Guillermo Delgado
 
 ## License
 
