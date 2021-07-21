@@ -39,9 +39,18 @@ export class ForumHeaderComponent implements OnInit {
        (err) => {console.log(err);}
     );
   }
-
+  
   searchForum(){
     this.searchEmitter.emit(this.searchString);
+
+  searchForum(forumName: string){
+    this.forumservice.SearchForum(forumName).subscribe(
+      
+    //   (resp) => {console.log(resp);
+    //     forumName.reset();
+    //   },
+    //    (err) => {console.log(err);}
+     );
    }
 
 
