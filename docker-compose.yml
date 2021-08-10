@@ -1,0 +1,16 @@
+version: '1.0'
+services:
+  apicont:
+    build: .
+    image: apiimage
+    ports: 
+    - "5001:80"
+    environment: 
+    - ConnectionStrings__AzureDb=Server=tcp:pettrackerapp.database.windows.net,1433;Initial Catalog=PetTrackerDB;Persist Security Info=False;User ID=group1;Password=admin123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+  findcont:
+    build: ./FindMyPetUI
+    image: findimage
+    ports:
+    - "4200:80"
+
+

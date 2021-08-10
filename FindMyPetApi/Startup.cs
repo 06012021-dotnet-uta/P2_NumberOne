@@ -33,6 +33,15 @@ namespace FindMyPetApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+             services.AddCors((options) =>
+            {
+                options.AddPolicy(name: "dev", builder =>
+                {
+                    builder.WithOrigins("http://127.0.0.1:5500", "http://localhost:4200", "https://localhost:44307")   // update thisssssssssss to proper ip / pathing
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
